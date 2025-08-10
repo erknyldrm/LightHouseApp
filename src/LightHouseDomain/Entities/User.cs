@@ -14,4 +14,7 @@ public class User : EntityBase
         Fullname = fullname;
         Email = email;
     }
+
+    public List<Photo> Photos { get; set; }
+    public List<Comment> Comments { get; set; } 
 }
