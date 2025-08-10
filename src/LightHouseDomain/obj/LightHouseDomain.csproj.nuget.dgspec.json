@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightSocialDomain/LightHouseDomain.csproj": {}
+    "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj": {}
   },
   "projects": {
-    "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightSocialDomain/LightHouseDomain.csproj": {
+    "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightSocialDomain/LightHouseDomain.csproj",
+        "projectUniqueName": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj",
         "projectName": "LightHouseDomain",
-        "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightSocialDomain/LightHouseDomain.csproj",
+        "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj",
         "packagesPath": "/Users/erkanyildirim/.nuget/packages/",
-        "outputPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightSocialDomain/obj/",
+        "outputPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/erkanyildirim/.nuget/NuGet/NuGet.Config"
