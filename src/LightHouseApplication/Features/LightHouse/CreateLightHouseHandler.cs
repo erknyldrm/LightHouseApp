@@ -1,3 +1,4 @@
+using FluentValidation;
 using LightHouseApplication.Common;
 using LightHouseApplication.Dtos;
 using LightHouseDomain.Countries;
@@ -6,17 +7,27 @@ using LightHouseDomain.ValueObjects;
 
 namespace LightHouseApplication.Features.LightHouse;
 
-public class CreateLightHouseHandler(ILightHouseRepository lightHouseRepository, ICountryRegistry countryRegistry)
+public class CreateLightHouseHandler(ILightHouseRepository lightHouseRepository, ICountryRegistry countryRegistry, IValidator<LightHouseDto> validator)
+   
 {
     private readonly ILightHouseRepository _lightHouseRepository = lightHouseRepository;
     private readonly ICountryRegistry _countryRegistry = countryRegistry;
+
+    private readonly IValidator<LightHouseDto> _validator = validator;
 
     public async Task<Result<Guid>> HandleAsync(LightHouseDto lightHouseDto)
     {
         try
         {
-            if (string.IsNullOrWhiteSpace(lightHouseDto.Name))
-                return Result<Guid>.Fail("LightHouse name cannot be empty.");
+            var validationResult = await _validator.ValidateAsync(lightHouseDto);
+            
+            if (!validationResult.IsValid)
+            {
+                var errorMessages = string.Join("; ", validationResult.Errors.Select(e => e.ErrorMessage));
+
+                return Result<Guid>.Fail(errorMessages);
+            }
+
 
             var country = _countryRegistry.GetCountryById(lightHouseDto.CountryId);
             if (country is null)

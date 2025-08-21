@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "yIAiDR81V9pQoHwBcX+OSlsI+pMXV1b0Ez94YC9aeCNt1zBhcl7A0RaOQQLerx27cF9Gv2h0SIsWHr9nAKVXLg==",
+  "dgSpecHash": "MTaTYKb5M3S3DhUT2Xt3ZTeYejnDJAqBpahoiUlMkSS6hysQaTUvUngMLK4MKDH5/V9MEDKX/NxxILpmU2yW6g==",
   "success": true,
   "projectFilePath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/LightHouseTests.csproj",
   "expectedPackageFiles": [
     "/Users/erkanyildirim/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/coverlet.collector/6.0.0/coverlet.collector.6.0.0.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.codecoverage/17.8.0/microsoft.codecoverage.17.8.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.net.test.sdk/17.8.0/microsoft.net.test.sdk.17.8.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
