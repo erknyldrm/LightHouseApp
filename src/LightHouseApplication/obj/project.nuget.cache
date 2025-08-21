@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "QxlxDSP5Nn2CPwt88zp1PhQQ68zANhZN8wVCXtfoEPYTSc+zWaksCNiYDIsZ0E7DtOBJzBgK5aqUbqCkovqvog==",
+  "dgSpecHash": "rb67ZnqEQdZmS37i8r4LkTvRMT87jBT6P/pkzln/7hiu/UrheaI0ur1Vdfn7fICDDvWIubtGCXJlsAh6/X/nJQ==",
   "success": true,
   "projectFilePath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseApplication/LightHouseApplication.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/erkanyildirim/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

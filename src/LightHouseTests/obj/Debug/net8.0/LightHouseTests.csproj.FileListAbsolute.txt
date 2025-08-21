@@ -107,3 +107,4 @@
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/obj/Debug/net8.0/LightHouseTests.pdb
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/obj/Debug/net8.0/LightHouseTests.genruntimeconfig.cache
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/obj/Debug/net8.0/ref/LightHouseTests.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/FluentValidation.dll
