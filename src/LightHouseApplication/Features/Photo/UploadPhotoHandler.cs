@@ -1,11 +1,9 @@
-using System;
 using LightHouseApplication.Common;
 using LightHouseApplication.Dtos;
-using LightHouseDomain.Entities;
 using LightHouseDomain.Interfaces;
 using LightHouseDomain.ValueObjects;
 
-namespace LightHouseApplication.Features.LightHouse;
+namespace LightHouseApplication.Features.Photo;
 
 public class UploadPhotoHandler(IPhotoStorageService photoStorageService, IPhotoRepository photoRepository)
 {
@@ -24,7 +22,7 @@ public class UploadPhotoHandler(IPhotoStorageService photoStorageService, IPhoto
 
             var metadata = new PhotoMetadata("N/A", "Unknown", photoDto.CameraModel, photoDto.UploadedAt);
 
-            var photo = new Photo(photoDto.UserId, photoDto.LightHouseId, savedPath, metadata);
+            var photo = new LightHouseDomain.Entities.Photo(photoDto.UserId, photoDto.LightHouseId, savedPath, metadata);
 
             await _photoRepository.AddAsync(photo);
 
