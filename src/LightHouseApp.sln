@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightHouseApplication", "Li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightHouseTests", "LightHouseTests\LightHouseTests.csproj", "{2DC25EBA-090F-457B-9B4D-665E88092810}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightHouseInfrastructure", "LightHouseInfrastructure\LightHouseInfrastructure.csproj", "{C4CED9E2-C676-42B1-B42C-5C34CE47FBD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2DC25EBA-090F-457B-9B4D-665E88092810}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DC25EBA-090F-457B-9B4D-665E88092810}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DC25EBA-090F-457B-9B4D-665E88092810}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4CED9E2-C676-42B1-B42C-5C34CE47FBD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4CED9E2-C676-42B1-B42C-5C34CE47FBD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4CED9E2-C676-42B1-B42C-5C34CE47FBD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4CED9E2-C676-42B1-B42C-5C34CE47FBD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
