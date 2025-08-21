@@ -2,7 +2,7 @@ using System;
 
 namespace LightHouseDomain.Countries;
 
-public interface ICountryRegister
+public interface ICountryRegistry
 {
     Country GetCountryById(int id);
     Country GetCountryByName(string name);

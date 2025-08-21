@@ -5,8 +5,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features/" />
-    <Folder Include="Features/LightHouse/" />
     <Folder Include="Features/Photo/" />
   </ItemGroup>
 

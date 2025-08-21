@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LightHouseDomain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6bbf20f0fb183f9bfd0ccb8dfb3c3a41cd0aefda")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f51c51d1c7a48b14911b35ff8d470990afcec2c")]
 [assembly: System.Reflection.AssemblyProductAttribute("LightHouseDomain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LightHouseDomain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
