@@ -3,13 +3,13 @@ namespace LightHouseApplication.Common;
 public class Result<T>
 {
     public bool IsSuccess { get; }
-    public T? Value { get; }
+    public T? Data { get; }
     public string? ErrorMessage { get; }
 
-    private Result(bool isSuccess, T? value = default, string? errorMessage = null)
+    private Result(bool isSuccess, T? data = default, string? errorMessage = null)
     {
         IsSuccess = isSuccess;
-        Value = value;
+        Data = data;
         ErrorMessage = errorMessage;
     }
 

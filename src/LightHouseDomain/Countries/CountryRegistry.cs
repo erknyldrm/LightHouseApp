@@ -2,7 +2,7 @@ using System;
 
 namespace LightHouseDomain.Countries;
 
-public class CountryRegister(IEnumerable<Country> countries) : ICountryRegister
+public class CountryRegister(IEnumerable<Country> countries) : ICountryRegistry
 {
     private readonly Dictionary<int, Country> _countries = countries.ToDictionary(c => c.Id, c => c);
 

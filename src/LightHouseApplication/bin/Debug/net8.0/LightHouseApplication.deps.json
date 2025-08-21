@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "LightHouseApplication/1.0.0": {
+        "dependencies": {
+          "LightHouseDomain": "1.0.0"
+        },
+        "runtime": {
+          "LightHouseApplication.dll": {}
+        }
+      },
+      "LightHouseDomain/1.0.0": {
+        "runtime": {
+          "LightHouseDomain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LightHouseApplication/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LightHouseDomain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
