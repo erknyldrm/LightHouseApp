@@ -1,8 +1,8 @@
-namespace LightHouseApplication.Features.LightHouse;
-using System.Threading.Tasks;
+
 using LightHouseApplication.Common;
 using LightHouseDomain.Interfaces;
 
+namespace LightHouseInfrastructure.Features.LightHouse;
 public class DeleteLightHouseHandler(ILightHouseRepository repository)
 {
     private readonly ILightHouseRepository _repository = repository;

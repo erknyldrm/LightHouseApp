@@ -10,7 +10,7 @@ public class ExternalCommentAuditor(HttpClient httpClient) : ICommentAuditor
 
     public async Task<bool> IsTextAppropriateAsync(string text)
     {
-        var response = await _httpClient.PostAsJsonAsync("https://external-auditor-api.com/audit", new { Text = text });
+        var response = await _httpClient.PostAsJsonAsync("http://localhost:5000", new { Text = text });
 
         var result = await response.Content.ReadFromJsonAsync<AuditResult>();
         return result?.IsAppropriate ?? true;

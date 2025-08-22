@@ -5,7 +5,7 @@ using LightHouseDomain.Countries;
 using LightHouseDomain.Interfaces;
 using LightHouseDomain.ValueObjects;
 
-namespace LightHouseApplication.Features.LightHouse;
+namespace LightHouseInfrastructure.Features.LightHouse;
 
 public class CreateLightHouseHandler(ILightHouseRepository lightHouseRepository, ICountryRegistry countryRegistry, IValidator<LightHouseDto> validator)
    

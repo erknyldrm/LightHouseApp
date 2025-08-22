@@ -4,7 +4,7 @@ using LightHouseApplication.Common;
 using LightHouseApplication.Dtos;
 using LightHouseDomain.Interfaces;
 
-namespace LightHouseApplication.Features.Comment;
+namespace LightHouseInfrastructure.Features.Comment;
 
 public class AddCommentHandler(ICommentRepository repository, IUserRepository userRepository,
                                IPhotoRepository photoRepository, ICommentAuditor commentAuditor, IValidator<CommentDto> validator)

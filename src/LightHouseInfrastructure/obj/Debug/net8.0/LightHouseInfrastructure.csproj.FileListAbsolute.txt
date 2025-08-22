@@ -14,3 +14,5 @@
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/obj/Debug/net8.0/refint/LightHouseInfrastructure.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/obj/Debug/net8.0/LightHouseInfrastructure.pdb
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/obj/Debug/net8.0/ref/LightHouseInfrastructure.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/bin/Debug/net8.0/LightHouseApplication.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/bin/Debug/net8.0/LightHouseApplication.pdb

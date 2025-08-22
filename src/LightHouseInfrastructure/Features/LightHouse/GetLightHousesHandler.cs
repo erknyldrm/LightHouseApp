@@ -3,7 +3,7 @@ using LightHouseApplication.Common;
 using LightHouseApplication.Dtos;
 using LightHouseDomain.Interfaces;
 
-namespace LightHouseApplication.Features.LightHouse;
+namespace LightHouseInfrastructure.Features.LightHouse;
 
 public class GetLightHousesHandler(ILightHouseRepository lightHouseRepository)
 {

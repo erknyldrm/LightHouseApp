@@ -3,7 +3,7 @@ using LightHouseApplication.Dtos;
 using LightHouseDomain.Interfaces;
 using LightHouseDomain.ValueObjects;
 
-namespace LightHouseApplication.Features.Photo;
+namespace LightHouseInfrastructure.Features.Photo;
 
 public class UploadPhotoHandler(IPhotoStorageService photoStorageService, IPhotoRepository photoRepository)
 {
