@@ -12,8 +12,16 @@ public class ExternalCommentAuditor(HttpClient httpClient) : ICommentAuditor
     {
         var response = await _httpClient.PostAsJsonAsync("http://localhost:5000", new { Text = text });
 
-        var result = await response.Content.ReadFromJsonAsync<AuditResult>();
-        return result?.IsAppropriate ?? true;
+        AuditResult result;
+        try
+        {
+            result = await response.Content.ReadFromJsonAsync<AuditResult>();
+            return result?.IsAppropriate ?? true;
+        }
+        catch (System.Exception)
+        {
+            return false;
+        }
     }
 }
 

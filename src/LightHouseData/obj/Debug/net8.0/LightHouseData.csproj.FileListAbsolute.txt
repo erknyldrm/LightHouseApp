@@ -1,0 +1,16 @@
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/bin/Debug/net8.0/LightHouseData.deps.json
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/bin/Debug/net8.0/LightHouseData.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/bin/Debug/net8.0/LightHouseData.pdb
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/bin/Debug/net8.0/LightHouseDomain.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/bin/Debug/net8.0/LightHouseDomain.pdb
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/obj/Debug/net8.0/LightHouseData.csproj.AssemblyReference.cache
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/obj/Debug/net8.0/LightHouseData.GeneratedMSBuildEditorConfig.editorconfig
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/obj/Debug/net8.0/LightHouseData.AssemblyInfoInputs.cache
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/obj/Debug/net8.0/LightHouseData.AssemblyInfo.cs
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/obj/Debug/net8.0/LightHouseData.csproj.CoreCompileInputs.cache
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/obj/Debug/net8.0/LightHouseData.sourcelink.json
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/obj/Debug/net8.0/LightHou.0680BF65.Up2Date
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/obj/Debug/net8.0/LightHouseData.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/obj/Debug/net8.0/refint/LightHouseData.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/obj/Debug/net8.0/LightHouseData.pdb
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/obj/Debug/net8.0/ref/LightHouseData.dll

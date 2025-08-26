@@ -5,6 +5,9 @@ namespace LightHouseDomain.Entities;
 
 public class Photo : EntityBase
 {
+    private string v;
+    private Guid guid;
+
     public Guid UserId { get; private set; }
     public Guid LighthouseId { get; private set; }
     public string Filename { get; private set; }
