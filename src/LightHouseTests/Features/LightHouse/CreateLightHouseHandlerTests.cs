@@ -2,9 +2,9 @@ using System;
 using FluentValidation;
 using FluentValidation.Results;
 using LightHouseApplication.Dtos;
-using LightHouseApplication.Features.LightHouse;
 using LightHouseDomain.Countries;
 using LightHouseDomain.Interfaces;
+using LightHouseInfrastructure.Features.LightHouse;
 using Moq;
 
 namespace LightHouseTests.Features.LightHouse;

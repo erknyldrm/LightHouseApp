@@ -1,7 +1,8 @@
 using System;
 using FluentValidation;
+using LightHouseApplication.Dtos;
 
-namespace LightHouseApplication.Dtos;
+namespace LightHouseApplication.Validators;
 
 public class LightHouseDtoValidator : AbstractValidator<LightHouseDto>
 {
