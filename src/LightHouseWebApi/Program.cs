@@ -1,6 +1,10 @@
 using LightHouseApplication;
+using LightHouseApplication.Contracts;
+using LightHouseApplication.Services;
 using LightHouseData;
+using LightHouseDomain.Interfaces;
 using LightHouseInfrastructure;
+using LightHouseInfrastructure.Auditors;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +16,7 @@ builder.Services.AddSwaggerGen();
 
 // Add Application Services
 builder.Services.AddScoped<ILightHouseService, LightHouseService>();
-builder.Services.AddScoped<IPhotoService, PhotoService>();
+//builder.Services.AddScoped<IPhotoService, PhotoService>();
 
 // Add Infrastructure Services
 builder.Services.AddScoped<ICommentAuditor, DefaultCommentAuditor>();
@@ -25,8 +29,8 @@ builder.Services.AddScoped<IPhotoRepository, PhotoRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 // Add DbContext
-builder.Services.AddDbContext<LightHouseDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+//builder.Services.AddDbContext<LightHouseDbContext>(options =>
+  //  options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

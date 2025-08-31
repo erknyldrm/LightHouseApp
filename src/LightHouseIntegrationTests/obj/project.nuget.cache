@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "38mWyehQuE2GJqZQH/5s3Se3WCh+W/BANlI+yJsiLoRceD2oaIK6S30CXZfeH8EiXfu+aCWr+C/lOtMZYc/HAw==",
+  "dgSpecHash": "MDgtdka7BrX+k1hJpNla+H9folzuN17xRixcrww6ZEWBriFcwZozDeBRv9CZbYDNWFrky3NY7upJRjAbIpd6OQ==",
   "success": true,
   "projectFilePath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseIntegrationTests/LightHouseIntegrationTests.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,8 @@
     "/Users/erkanyildirim/.nuget/packages/dapper/2.1.66/dapper.2.1.66.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.codecoverage/17.8.0/microsoft.codecoverage.17.8.0.nupkg.sha512",
-    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.2/microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.8/microsoft.extensions.dependencyinjection.9.0.8.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.8/microsoft.extensions.dependencyinjection.abstractions.9.0.8.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.2/microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.net.test.sdk/17.8.0/microsoft.net.test.sdk.17.8.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",

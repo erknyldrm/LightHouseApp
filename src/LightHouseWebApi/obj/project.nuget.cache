@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "U6Eex9LO/rwyP6jv7WJCYA0ZDRfFjVmuiZN1CAatDDEPVX1J5hUBetnFvEqobi9I26MPiZy6SKV3OcTrvxsJxA==",
+  "dgSpecHash": "g4mstL0P8rFbttrdqO7USje1h9DFU1ItiBH2Cy0FRyh+r+2xtI9dJxTsO4O+G50VekIFc3Uep1A5q1x0HMztvw==",
   "success": true,
   "projectFilePath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/LightHouseWebApi.csproj",
   "expectedPackageFiles": [
@@ -23,8 +23,8 @@
     "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0/microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.caching.memory/8.0.0/microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.configuration.abstractions/8.0.0/microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
-    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
-    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.2/microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.8/microsoft.extensions.dependencyinjection.9.0.8.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.8/microsoft.extensions.dependencyinjection.abstractions.9.0.8.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencymodel/8.0.0/microsoft.extensions.dependencymodel.8.0.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.logging/8.0.0/microsoft.extensions.logging.8.0.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.2/microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dX3upehwEh0bdZ+0gc0W5ah1sWvTQsfePjIdkWqLtlnkOmVliqGIR1OwGxvw5n+CA2btOWWgYdrH72fjadRNIQ==",
+  "dgSpecHash": "mJwBVdz+P6MfY2xMzRbtK9kRdw2zv/x6v4U9DhwhfGkKSCybzSfs9/ARnjhS3dQ7JAOm96GL2PTm4AyZlii+Kg==",
   "success": true,
   "projectFilePath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/LightHouseTests.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,8 @@
     "/Users/erkanyildirim/.nuget/packages/coverlet.collector/6.0.0/coverlet.collector.6.0.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.codecoverage/17.8.0/microsoft.codecoverage.17.8.0.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.8/microsoft.extensions.dependencyinjection.9.0.8.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.8/microsoft.extensions.dependencyinjection.abstractions.9.0.8.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.net.test.sdk/17.8.0/microsoft.net.test.sdk.17.8.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",

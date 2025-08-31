@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "rb67ZnqEQdZmS37i8r4LkTvRMT87jBT6P/pkzln/7hiu/UrheaI0ur1Vdfn7fICDDvWIubtGCXJlsAh6/X/nJQ==",
+  "dgSpecHash": "YGICdHthNdqdcLgS7OH8I0e76+srC1mwlfNxWtZaPisTIOJbkbwjfd71refuOmqc4sOWKzPGNgEbcTHrm3G6FA==",
   "success": true,
   "projectFilePath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseApplication/LightHouseApplication.csproj",
   "expectedPackageFiles": [
-    "/Users/erkanyildirim/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512"
+    "/Users/erkanyildirim/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.8/microsoft.extensions.dependencyinjection.9.0.8.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.8/microsoft.extensions.dependencyinjection.abstractions.9.0.8.nupkg.sha512"
   ],
   "logs": []
 }

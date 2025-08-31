@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "BBDNU2aBjYTSiYBIAOPuVcGTNp6NNHjivvOL9TckyrSWJntoipwq6c3mM1yuwQFPSWiycwysXiC9rhAPFVLeAA==",
+  "success": true,
+  "projectFilePath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/Clients/TerminalApp/TerminalApp.csproj",
+  "expectedPackageFiles": [
+    "/Users/erkanyildirim/.nuget/packages/microsoft.dotnet.ilcompiler/8.0.3/microsoft.dotnet.ilcompiler.8.0.3.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.net.illink.tasks/8.0.3/microsoft.net.illink.tasks.8.0.3.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/runtime.osx-arm64.microsoft.dotnet.ilcompiler/8.0.3/runtime.osx-arm64.microsoft.dotnet.ilcompiler.8.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

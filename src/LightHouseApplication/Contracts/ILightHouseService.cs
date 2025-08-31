@@ -6,9 +6,9 @@ namespace LightHouseApplication.Contracts;
 
 public interface ILightHouseService
 {
-    Task<IEnumerable<LightHouseDto>> GetAllLightHouseNamesAsync();
+    Task<IEnumerable<LightHouseDto>> GetLightHousesAsync();
     Task<LightHouseDto?> GetLightHouseByIdAsync(Guid id);
-    Task<LightHouseDto> CreateLightHouseAsync(LightHouseDto lightHouseDto);
+    Task<Guid> CreateLightHouseAsync(LightHouseDto lightHouseDto);
     Task<LightHouseDto> UpdateLightHouseAsync(Guid id, LightHouseDto lightHouseDto);
     Task DeleteLightHouseAsync(Guid id);
 }

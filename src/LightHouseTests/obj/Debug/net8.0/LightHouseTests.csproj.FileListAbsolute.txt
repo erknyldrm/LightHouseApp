@@ -110,3 +110,5 @@
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/obj/Debug/net8.0/ref/LightHouseTests.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/LightHouseInfrastructure.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/LightHouseInfrastructure.pdb
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
