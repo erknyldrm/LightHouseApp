@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "G2uAxntBpRzZqnL4CdWv+EIBfReco01XyOKF8wYadhE3tzRiHc5C5Z85u0vjddNRUBIJcMk3CkpqqlXYnqyvGw==",
+  "dgSpecHash": "da0kNVWGkBHGUNF/AXgS//MHWf+QMfA0kPxWDXqCulv6gH123+2spUOTgZUbrdncRX4PjBzjtVV08wqxuN9kQA==",
   "success": true,
   "projectFilePath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/LightHouseData.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/erkanyildirim/.nuget/packages/dapper/2.1.66/dapper.2.1.66.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.2/microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.2/microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/npgsql/9.0.3/npgsql.9.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

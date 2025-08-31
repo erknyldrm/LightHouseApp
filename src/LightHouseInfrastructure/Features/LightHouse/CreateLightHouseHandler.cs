@@ -37,7 +37,7 @@ public class CreateLightHouseHandler(ILightHouseRepository lightHouseRepository,
 
             var lightHouse = new LightHouseDomain.Entities.LightHouse(
                 lightHouseDto.Name,
-                country.Name,
+                country,
                 location);
 
             await _lightHouseRepository.AddAsync(lightHouse);

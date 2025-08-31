@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseIntegrationTests/LightHouseIntegrationTests.csproj": {}
+    "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/LightHouseWebApi.csproj": {}
   },
   "projects": {
     "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseApplication/LightHouseApplication.csproj": {
@@ -271,14 +271,14 @@
         }
       }
     },
-    "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseIntegrationTests/LightHouseIntegrationTests.csproj": {
+    "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/LightHouseWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseIntegrationTests/LightHouseIntegrationTests.csproj",
-        "projectName": "LightHouseIntegrationTests",
-        "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseIntegrationTests/LightHouseIntegrationTests.csproj",
+        "projectUniqueName": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/LightHouseWebApi.csproj",
+        "projectName": "LightHouseWebApi",
+        "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/LightHouseWebApi.csproj",
         "packagesPath": "/Users/erkanyildirim/.nuget/packages/",
-        "outputPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseIntegrationTests/obj/",
+        "outputPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/erkanyildirim/.nuget/NuGet/NuGet.Config"
@@ -299,9 +299,6 @@
               },
               "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/LightHouseData.csproj": {
                 "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/LightHouseData.csproj"
-              },
-              "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj": {
-                "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj"
               },
               "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/LightHouseInfrastructure.csproj": {
                 "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/LightHouseInfrastructure.csproj"
@@ -324,21 +321,27 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.NET.Test.Sdk": {
+            "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[17.8.0, )"
+              "version": "[8.0.0, )"
             },
-            "coverlet.collector": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[8.0.0, )"
             },
-            "xunit": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[2.5.3, )"
+              "version": "[8.0.0, )"
             },
-            "xunit.runner.visualstudio": {
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[2.5.3, )"
+              "version": "[8.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
             }
           },
           "imports": [
@@ -353,6 +356,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightHouseInfrastructure", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightHouseData", "LightHouseData\LightHouseData.csproj", "{1433153C-2161-4E59-8278-61984CAA51F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightHouseWebApi", "LightHouseWebApi\LightHouseWebApi.csproj", "{98765432-4321-4321-4321-210987654321}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{0C88DD14-F956-CE84-757C-A364CCF449FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightHouseTests", "LightHouseTests\LightHouseTests.csproj", "{469F7F45-4D52-4C37-9A4C-0BA448F79E49}"
@@ -47,6 +49,10 @@ Global
 		{3E87BD96-358F-4498-88BA-3384DB484427}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E87BD96-358F-4498-88BA-3384DB484427}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E87BD96-358F-4498-88BA-3384DB484427}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98765432-4321-4321-4321-210987654321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98765432-4321-4321-4321-210987654321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98765432-4321-4321-4321-210987654321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98765432-4321-4321-4321-210987654321}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
