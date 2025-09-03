@@ -1,11 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "BBDNU2aBjYTSiYBIAOPuVcGTNp6NNHjivvOL9TckyrSWJntoipwq6c3mM1yuwQFPSWiycwysXiC9rhAPFVLeAA==",
+  "dgSpecHash": "hGKd6fHGX/BhAvwjEijAc21Ina2NGX+rB/vEMxkWqK3OyOP934Jv7Zg7VNt06cgtAVhgHl5saB09/sn+PRMqbw==",
   "success": true,
   "projectFilePath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/Clients/TerminalApp/TerminalApp.csproj",
   "expectedPackageFiles": [
+    "/Users/erkanyildirim/.nuget/packages/dapper/2.1.66/dapper.2.1.66.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.dotnet.ilcompiler/8.0.3/microsoft.dotnet.ilcompiler.8.0.3.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.8/microsoft.extensions.dependencyinjection.9.0.8.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.8/microsoft.extensions.dependencyinjection.abstractions.9.0.8.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.2/microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.net.illink.tasks/8.0.3/microsoft.net.illink.tasks.8.0.3.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/npgsql/9.0.3/npgsql.9.0.3.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/runtime.osx-arm64.microsoft.dotnet.ilcompiler/8.0.3/runtime.osx-arm64.microsoft.dotnet.ilcompiler.8.0.3.nupkg.sha512"
   ],
   "logs": []

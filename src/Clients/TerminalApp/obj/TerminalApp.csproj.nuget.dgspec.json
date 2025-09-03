@@ -26,7 +26,14 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseApplication/LightHouseApplication.csproj": {
+                "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseApplication/LightHouseApplication.csproj"
+              },
+              "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/LightHouseData.csproj": {
+                "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/LightHouseData.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -78,6 +85,211 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseApplication/LightHouseApplication.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseApplication/LightHouseApplication.csproj",
+        "projectName": "LightHouseApplication",
+        "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseApplication/LightHouseApplication.csproj",
+        "packagesPath": "/Users/erkanyildirim/.nuget/packages/",
+        "outputPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseApplication/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/erkanyildirim/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj": {
+                "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/LightHouseData.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/LightHouseData.csproj",
+        "projectName": "LightHouseData",
+        "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/LightHouseData.csproj",
+        "packagesPath": "/Users/erkanyildirim/.nuget/packages/",
+        "outputPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/erkanyildirim/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj": {
+                "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.66, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj",
+        "projectName": "LightHouseDomain",
+        "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj",
+        "packagesPath": "/Users/erkanyildirim/.nuget/packages/",
+        "outputPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/erkanyildirim/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

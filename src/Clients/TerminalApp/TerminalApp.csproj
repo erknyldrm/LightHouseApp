@@ -8,4 +8,9 @@
     <PublishAot>true</PublishAot>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../../LightHouseApplication/LightHouseApplication.csproj" />
+    <ProjectReference Include="../../LightHouseData/LightHouseData.csproj" />
+  </ItemGroup>
+
 </Project>

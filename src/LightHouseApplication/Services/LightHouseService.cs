@@ -5,10 +5,10 @@ using LightHouseInfrastructure.Features.LightHouse;
 
 namespace LightHouseApplication.Services;
 
-public class LightHouseService(CreateLightHouseHandler createLightHouseHandler, DeleteLightHouseHandler deleteLightHouseHandler, GetLightHousesHandler getLightHousesHandler) : ILightHouseService
+public class LightHouseService(CreateLightHouseHandler createLightHouseHandler, GetLightHousesHandler getLightHousesHandler) : ILightHouseService
 {
     private readonly CreateLightHouseHandler _createLightHouseHandler = createLightHouseHandler;
-    private readonly DeleteLightHouseHandler _deleteLightHouseHandler = deleteLightHouseHandler;
+
     private readonly GetLightHousesHandler _getLightHousesHandler = getLightHousesHandler;
 
     public async Task<Guid> CreateLightHouseAsync(LightHouseDto lightHouseDto)
