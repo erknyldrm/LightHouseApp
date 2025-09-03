@@ -11,4 +11,8 @@
     <ProjectReference Include="../LightHouseDomain/LightHouseDomain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Minio" Version="6.0.5" />
+  </ItemGroup>
+
 </Project>
