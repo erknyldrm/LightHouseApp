@@ -1,5 +1,6 @@
 using System;
 using LightHouseDomain.Interfaces;
+using LightHouseInfrastructure.Configuration;
 using Microsoft.Extensions.Options;
 using Minio;
 using Minio.DataModel.Args;
@@ -11,14 +12,16 @@ public class PhotoStorageService : IPhotoStorageService
     private readonly IMinioClient _minioClient;
     private readonly string _bucketName;
 
-    public PhotoStorageService(IOptions<MinioSettings> minioSettings)
+    public PhotoStorageService(IOptions<MinioSettings> minioSettings, VaultConfigurationService vaultConfigurationService)
     {
+        var (accessKey, secretKey) = vaultConfigurationService.GetMinioCredentialAsync().GetAwaiter().GetResult();
+
         var settings = minioSettings.Value;
         _bucketName = settings.BucketName;
 
         _minioClient = new MinioClient()
             .WithEndpoint(settings.EndPoint)
-            .WithCredentials(settings.AccessKey, settings.SecretKey)
+            .WithCredentials(accessKey, secretKey)
             .WithSSL(settings.UseSSL)
             .Build();
     }
@@ -28,16 +31,16 @@ public class PhotoStorageService : IPhotoStorageService
     {
         await _minioClient.RemoveObjectAsync(new RemoveObjectArgs()
             .WithBucket(_bucketName)
-            .WithObject(filePath), cancellationToken);  
+            .WithObject(filePath), cancellationToken);
     }
 
     public async Task<Stream> GetAsync(string filePath, CancellationToken cancellationToken = default)
     {
-        var memoryStream = new MemoryStream();  
+        var memoryStream = new MemoryStream();
         await _minioClient.GetObjectAsync(new GetObjectArgs()
             .WithBucket(_bucketName)
             .WithObject(filePath)
-            .WithCallbackStream(stream => 
+            .WithCallbackStream(stream =>
             {
                 stream.CopyTo(memoryStream);
             }), cancellationToken);

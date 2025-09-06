@@ -112,3 +112,15 @@
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/LightHouseInfrastructure.pdb
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/CommunityToolkit.HighPerformance.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/Microsoft.Extensions.Configuration.Binder.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/Microsoft.Extensions.Primitives.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/Minio.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/System.Diagnostics.DiagnosticSource.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/System.IO.Hashing.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/System.Reactive.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseTests/bin/Debug/net8.0/VaultSharp.dll
