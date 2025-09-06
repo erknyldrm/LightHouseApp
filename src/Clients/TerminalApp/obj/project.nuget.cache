@@ -1,17 +1,25 @@
 {
   "version": 2,
-  "dgSpecHash": "hGKd6fHGX/BhAvwjEijAc21Ina2NGX+rB/vEMxkWqK3OyOP934Jv7Zg7VNt06cgtAVhgHl5saB09/sn+PRMqbw==",
+  "dgSpecHash": "xpZnnyEm+P8NQHGRdoSQcUhQjRxyUlCc6piaJMsG4O3ZSaqldfV6ZGElB6q+rGZc1MXn5vO7p00c9zeQA6ifEA==",
   "success": true,
   "projectFilePath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/Clients/TerminalApp/TerminalApp.csproj",
   "expectedPackageFiles": [
+    "/Users/erkanyildirim/.nuget/packages/communitytoolkit.highperformance/8.4.0/communitytoolkit.highperformance.8.4.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/dapper/2.1.66/dapper.2.1.66.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.dotnet.ilcompiler/8.0.3/microsoft.dotnet.ilcompiler.8.0.3.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.8/microsoft.extensions.dependencyinjection.9.0.8.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.8/microsoft.extensions.dependencyinjection.abstractions.9.0.8.nupkg.sha512",
-    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.2/microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.logging/9.0.4/microsoft.extensions.logging.9.0.4.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.logging.abstractions/9.0.4/microsoft.extensions.logging.abstractions.9.0.4.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.options/9.0.4/microsoft.extensions.options.9.0.4.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/microsoft.extensions.primitives/9.0.4/microsoft.extensions.primitives.9.0.4.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/microsoft.net.illink.tasks/8.0.3/microsoft.net.illink.tasks.8.0.3.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/minio/6.0.5/minio.6.0.5.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/npgsql/9.0.3/npgsql.9.0.3.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/system.diagnostics.diagnosticsource/9.0.4/system.diagnostics.diagnosticsource.9.0.4.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/system.io.hashing/9.0.4/system.io.hashing.9.0.4.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/system.reactive/6.0.1/system.reactive.6.0.1.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/runtime.osx-arm64.microsoft.dotnet.ilcompiler/8.0.3/runtime.osx-arm64.microsoft.dotnet.ilcompiler.8.0.3.nupkg.sha512"
   ],
   "logs": []

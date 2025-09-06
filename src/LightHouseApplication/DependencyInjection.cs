@@ -6,6 +6,7 @@ using LightHouseApplication.Services;
 using LightHouseApplication.Validators;
 using LightHouseDomain.Countries;
 using LightHouseInfrastructure.Features.LightHouse;
+using LightHouseInfrastructure.Features.Photo;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LightHouseApplication;
@@ -20,6 +21,8 @@ public static class DependencyInjection
         }
 
         services.AddScoped<ILightHouseService, LightHouseService>();
+        services.AddScoped<UploadPhotoHandler>();
+        services.AddScoped<IPhotoService, PhotoService>();
         services.AddScoped<CreateLightHouseHandler>();
         services.AddScoped<GetLightHousesHandler>();
         services.AddScoped<ICountryRegistry, CountryRegisty>();

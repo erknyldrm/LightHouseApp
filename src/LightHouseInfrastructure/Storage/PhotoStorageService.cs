@@ -24,9 +24,26 @@ public class PhotoStorageService : IPhotoStorageService
     }
 
 
-    public Task<bool> DeletePhotoAsync(string filePath, CancellationToken cancellationToken = default)
+    public async Task DeletePhotoAsync(string filePath, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        await _minioClient.RemoveObjectAsync(new RemoveObjectArgs()
+            .WithBucket(_bucketName)
+            .WithObject(filePath), cancellationToken);  
+    }
+
+    public async Task<Stream> GetAsync(string filePath, CancellationToken cancellationToken = default)
+    {
+        var memoryStream = new MemoryStream();  
+        await _minioClient.GetObjectAsync(new GetObjectArgs()
+            .WithBucket(_bucketName)
+            .WithObject(filePath)
+            .WithCallbackStream(stream => 
+            {
+                stream.CopyTo(memoryStream);
+            }), cancellationToken);
+
+        memoryStream.Position = 0;
+        return memoryStream;
     }
 
     public Task<string> GetFilePathAsync(Stream fileStream, CancellationToken cancellationToken = default)

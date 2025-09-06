@@ -32,6 +32,9 @@
               },
               "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/LightHouseData.csproj": {
                 "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/LightHouseData.csproj"
+              },
+              "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/LightHouseInfrastructure.csproj": {
+                "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/LightHouseInfrastructure.csproj"
               }
             }
           }
@@ -278,6 +281,78 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/LightHouseInfrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/LightHouseInfrastructure.csproj",
+        "projectName": "LightHouseInfrastructure",
+        "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/LightHouseInfrastructure.csproj",
+        "packagesPath": "/Users/erkanyildirim/.nuget/packages/",
+        "outputPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/erkanyildirim/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseApplication/LightHouseApplication.csproj": {
+                "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseApplication/LightHouseApplication.csproj"
+              },
+              "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj": {
+                "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Minio": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
