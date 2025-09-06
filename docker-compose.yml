@@ -57,6 +57,17 @@ services:
     networks:
       - lighthouse-network
 
+  vault:
+    image: hashicorp/vault:latest
+    container_name: plh-vault
+    ports:
+      - "8200:8200"
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: "root"
+      VAULT_ADDR: "http://localhost:8200"
+      VAULT_DEV_LISTEN_ADDRESS: "vault:8200"
+    privileged: true
+
 volumes:
   pgdata:
   minio_data:

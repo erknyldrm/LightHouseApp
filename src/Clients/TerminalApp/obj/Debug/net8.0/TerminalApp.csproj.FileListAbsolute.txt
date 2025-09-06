@@ -48,3 +48,7 @@
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/Clients/TerminalApp/bin/Debug/net8.0/System.Reactive.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/Clients/TerminalApp/bin/Debug/net8.0/LightHouseInfrastructure.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/Clients/TerminalApp/bin/Debug/net8.0/LightHouseInfrastructure.pdb
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/Clients/TerminalApp/bin/Debug/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/Clients/TerminalApp/bin/Debug/net8.0/Microsoft.Extensions.Configuration.Binder.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/Clients/TerminalApp/bin/Debug/net8.0/Newtonsoft.Json.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/Clients/TerminalApp/bin/Debug/net8.0/VaultSharp.dll
