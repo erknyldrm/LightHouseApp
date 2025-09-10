@@ -100,8 +100,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseApplication/LightHouseApplication.csproj": {
+                "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseApplication/LightHouseApplication.csproj"
+              },
               "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj": {
                 "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseDomain/LightHouseDomain.csproj"
+              },
+              "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/LightHouseInfrastructure.csproj": {
+                "projectPath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/LightHouseInfrastructure.csproj"
               }
             }
           }
@@ -256,6 +262,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
               "version": "[9.0.8, )"

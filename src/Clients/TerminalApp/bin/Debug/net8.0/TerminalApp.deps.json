@@ -43,6 +43,32 @@
         }
       },
       "Microsoft.DotNet.ILCompiler/8.0.3": {},
+      "Microsoft.Extensions.Caching.Abstractions/9.0.8": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "9.0.8"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Caching.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.825.36511"
+          }
+        }
+      },
+      "Microsoft.Extensions.Caching.Memory/9.0.8": {
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "9.0.8",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Options": "9.0.8",
+          "Microsoft.Extensions.Primitives": "9.0.8"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Caching.Memory.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.825.36511"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration.Abstractions/9.0.8": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "9.0.8"
@@ -87,8 +113,8 @@
       "Microsoft.Extensions.Logging/9.0.4": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "9.0.8",
-          "Microsoft.Extensions.Logging.Abstractions": "9.0.4",
-          "Microsoft.Extensions.Options": "9.0.4"
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Options": "9.0.8"
         },
         "runtime": {
           "lib/net8.0/Microsoft.Extensions.Logging.dll": {
@@ -97,19 +123,19 @@
           }
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
+      "Microsoft.Extensions.Logging.Abstractions/9.0.8": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8",
-          "System.Diagnostics.DiagnosticSource": "9.0.4"
+          "System.Diagnostics.DiagnosticSource": "9.0.8"
         },
         "runtime": {
           "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
             "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.425.16305"
+            "fileVersion": "9.0.825.36511"
           }
         }
       },
-      "Microsoft.Extensions.Options/9.0.4": {
+      "Microsoft.Extensions.Options/9.0.8": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8",
           "Microsoft.Extensions.Primitives": "9.0.8"
@@ -117,7 +143,7 @@
         "runtime": {
           "lib/net8.0/Microsoft.Extensions.Options.dll": {
             "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.425.16305"
+            "fileVersion": "9.0.825.36511"
           }
         }
       },
@@ -155,7 +181,7 @@
       },
       "Npgsql/9.0.3": {
         "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "9.0.4"
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.8"
         },
         "runtime": {
           "lib/net8.0/Npgsql.dll": {
@@ -164,11 +190,11 @@
           }
         }
       },
-      "System.Diagnostics.DiagnosticSource/9.0.4": {
+      "System.Diagnostics.DiagnosticSource/9.0.8": {
         "runtime": {
           "lib/net8.0/System.Diagnostics.DiagnosticSource.dll": {
             "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.425.16305"
+            "fileVersion": "9.0.825.36511"
           }
         }
       },
@@ -212,7 +238,9 @@
       "LightHouseData/1.0.0": {
         "dependencies": {
           "Dapper": "2.1.66",
+          "LightHouseApplication": "1.0.0",
           "LightHouseDomain": "1.0.0",
+          "LightHouseInfrastructure": "1.0.0",
           "Npgsql": "9.0.3"
         },
         "runtime": {
@@ -228,6 +256,7 @@
         "dependencies": {
           "LightHouseApplication": "1.0.0",
           "LightHouseDomain": "1.0.0",
+          "Microsoft.Extensions.Caching.Memory": "9.0.8",
           "Microsoft.Extensions.Configuration.Abstractions": "9.0.8",
           "Microsoft.Extensions.Configuration.Binder": "9.0.8",
           "Minio": "6.0.5",
@@ -273,6 +302,20 @@
       "path": "microsoft.dotnet.ilcompiler/8.0.3",
       "hashPath": "microsoft.dotnet.ilcompiler.8.0.3.nupkg.sha512"
     },
+    "Microsoft.Extensions.Caching.Abstractions/9.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4h7bsVoKoiK+SlPM+euX/ayGnKZhl47pPCidLTiio9xyG+vgVVfcYxcYQgjm0SCrdSxjG0EGIAKF8EFr3G8Ifw==",
+      "path": "microsoft.extensions.caching.abstractions/9.0.8",
+      "hashPath": "microsoft.extensions.caching.abstractions.9.0.8.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Caching.Memory/9.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-grR+oPyj8HVn4DT8CFUUdSw2pZZKS13KjytFe4txpHQliGM1GEDotohmjgvyl3hm7RFB3FRqvbouEX3/1ewp5A==",
+      "path": "microsoft.extensions.caching.memory/9.0.8",
+      "hashPath": "microsoft.extensions.caching.memory.9.0.8.nupkg.sha512"
+    },
     "Microsoft.Extensions.Configuration.Abstractions/9.0.8": {
       "type": "package",
       "serviceable": true,
@@ -308,19 +351,19 @@
       "path": "microsoft.extensions.logging/9.0.4",
       "hashPath": "microsoft.extensions.logging.9.0.4.nupkg.sha512"
     },
-    "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
+    "Microsoft.Extensions.Logging.Abstractions/9.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0MXlimU4Dud6t+iNi5NEz3dO2w1HXdhoOLaYFuLPCjAsvlPQGwOT6V2KZRMLEhCAm/stSZt1AUv0XmDdkjvtbw==",
-      "path": "microsoft.extensions.logging.abstractions/9.0.4",
-      "hashPath": "microsoft.extensions.logging.abstractions.9.0.4.nupkg.sha512"
+      "sha512": "sha512-pYnAffJL7ARD/HCnnPvnFKSIHnTSmWz84WIlT9tPeQ4lHNiu0Az7N/8itihWvcF8sT+VVD5lq8V+ckMzu4SbOw==",
+      "path": "microsoft.extensions.logging.abstractions/9.0.8",
+      "hashPath": "microsoft.extensions.logging.abstractions.9.0.8.nupkg.sha512"
     },
-    "Microsoft.Extensions.Options/9.0.4": {
+    "Microsoft.Extensions.Options/9.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-fiFI2+58kicqVZyt/6obqoFwHiab7LC4FkQ3mmiBJ28Yy4fAvy2+v9MRnSvvlOO8chTOjKsdafFl/K9veCPo5g==",
-      "path": "microsoft.extensions.options/9.0.4",
-      "hashPath": "microsoft.extensions.options.9.0.4.nupkg.sha512"
+      "sha512": "sha512-OmTaQ0v4gxGQkehpwWIqPoEiwsPuG/u4HUsbOFoWGx4DKET2AXzopnFe/fE608FIhzc/kcg2p8JdyMRCCUzitQ==",
+      "path": "microsoft.extensions.options/9.0.8",
+      "hashPath": "microsoft.extensions.options.9.0.8.nupkg.sha512"
     },
     "Microsoft.Extensions.Primitives/9.0.8": {
       "type": "package",
@@ -357,12 +400,12 @@
       "path": "npgsql/9.0.3",
       "hashPath": "npgsql.9.0.3.nupkg.sha512"
     },
-    "System.Diagnostics.DiagnosticSource/9.0.4": {
+    "System.Diagnostics.DiagnosticSource/9.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Be0emq8bRmcK4eeJIFUt9+vYPf7kzuQrFs8Ef1CdGvXpq/uSve22PTSkRF09bF/J7wmYJ2DHf2v7GaT3vMXnwQ==",
-      "path": "system.diagnostics.diagnosticsource/9.0.4",
-      "hashPath": "system.diagnostics.diagnosticsource.9.0.4.nupkg.sha512"
+      "sha512": "sha512-Lj8/a1Hzli1z6jo8H9urc16GxkpVJtJM+W9fmivXMNu7nwzHziGkxn4vO0DFscMbudkEVKSezdDuHk5kgM0X/g==",
+      "path": "system.diagnostics.diagnosticsource/9.0.8",
+      "hashPath": "system.diagnostics.diagnosticsource.9.0.8.nupkg.sha512"
     },
     "System.IO.Hashing/9.0.4": {
       "type": "package",

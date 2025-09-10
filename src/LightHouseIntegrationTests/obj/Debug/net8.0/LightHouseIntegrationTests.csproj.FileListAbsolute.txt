@@ -123,3 +123,5 @@
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseIntegrationTests/bin/Debug/net8.0/System.IO.Hashing.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseIntegrationTests/bin/Debug/net8.0/System.Reactive.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseIntegrationTests/bin/Debug/net8.0/VaultSharp.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseIntegrationTests/bin/Debug/net8.0/Microsoft.Extensions.Caching.Abstractions.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseIntegrationTests/bin/Debug/net8.0/Microsoft.Extensions.Caching.Memory.dll

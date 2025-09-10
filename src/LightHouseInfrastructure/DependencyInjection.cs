@@ -1,6 +1,7 @@
 using System;
 using LightHouseDomain.Interfaces;
 using LightHouseInfrastructure.Auditors;
+using LightHouseInfrastructure.Caching;
 using LightHouseInfrastructure.Configuration;
 using LightHouseInfrastructure.SecretManager;
 using LightHouseInfrastructure.Storage;
@@ -20,15 +21,19 @@ public static class DependencyInjection
         services.AddScoped<ISecretManager, VaultSecretManager>();
         services.AddScoped<VaultConfigurationService>();
 
-        services.AddScoped(provider => 
+        services.AddScoped(provider =>
         {
             var config = provider.GetRequiredService<IOptions<MinioSettings>>().Value;
-        
+
             return new MinioClient()
                 .WithEndpoint(config.EndPoint)
                 .WithCredentials(config.AccessKey, config.SecretKey)
                 .Build();
-        }); 
+        });
+
+        services.AddMemoryCache();
+        services.AddSingleton<ICacheService, MemoryCacheService>();
+
         return services;
     }
 

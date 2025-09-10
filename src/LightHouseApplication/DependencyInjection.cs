@@ -25,7 +25,7 @@ public static class DependencyInjection
         services.AddScoped<IPhotoService, PhotoService>();
         services.AddScoped<CreateLightHouseHandler>();
         services.AddScoped<GetLightHousesHandler>();
-        services.AddScoped<ICountryRegistry, CountryRegisty>();
+        //services.AddScoped<ICountryDataReader, CountryDataReader>();
         services.AddScoped<IValidator<LightHouseDto>, LightHouseDtoValidator>();
 
         return services;

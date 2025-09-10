@@ -1,5 +1,6 @@
 using FluentValidation;
 using LightHouseApplication.Common;
+using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
 using LightHouseDomain.Countries;
 using LightHouseDomain.Interfaces;
@@ -7,11 +8,11 @@ using LightHouseDomain.ValueObjects;
 
 namespace LightHouseInfrastructure.Features.LightHouse;
 
-public class CreateLightHouseHandler(ILightHouseRepository lightHouseRepository, ICountryRegistry countryRegistry, IValidator<LightHouseDto> validator)
+public class CreateLightHouseHandler(ILightHouseRepository lightHouseRepository, ICountryDataReader countryDataReader, IValidator<LightHouseDto> validator)
    
 {
     private readonly ILightHouseRepository _lightHouseRepository = lightHouseRepository;
-    private readonly ICountryRegistry _countryRegistry = countryRegistry;
+    private readonly ICountryDataReader _countryDataReader = countryDataReader;
 
     private readonly IValidator<LightHouseDto> _validator = validator;
 
@@ -29,7 +30,7 @@ public class CreateLightHouseHandler(ILightHouseRepository lightHouseRepository,
             }
 
 
-            var country = _countryRegistry.GetCountryById(lightHouseDto.CountryId);
+            var country = await  _countryDataReader.GetCountryByIdAsync(lightHouseDto.CountryId);
             if (country is null)
                 return Result<Guid>.Fail("Country not found.");
 
