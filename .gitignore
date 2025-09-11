@@ -169,3 +169,11 @@ src/LightHouseApplication/obj/Debug/net8.0/LightHouseApplication.csproj.FileList
 src/LightHouseDomain/obj/Debug/net8.0/LightHouseDomain.csproj.FileListAbsolute.txt
 src/LightHouseInfrastructure/obj/Debug/net8.0/LightHouseInfrastructure.csproj.FileListAbsolute.txt
 src/LightHouseTests/obj/Debug/net8.0/LightHouseTests.csproj.FileListAbsolute.txt
+src/Clients/TerminalApp/obj/Debug/net8.0/TerminalApp.AssemblyInfo.cs
+src/Clients/TerminalApp/obj/Debug/net8.0/TerminalApp.AssemblyInfoInputs.cache
+src/LightHouseData/obj/Debug/net8.0/LightHouseData.AssemblyInfo.cs
+src/LightHouseData/obj/Debug/net8.0/LightHouseData.AssemblyInfoInputs.cache
+src/LightHouseIntegrationTests/obj/Debug/net8.0/LightHouseIntegrationTests.AssemblyInfo.cs
+src/LightHouseIntegrationTests/obj/Debug/net8.0/LightHouseIntegrationTests.AssemblyInfoInputs.cache
+src/LightHouseWebApi/obj/Debug/net8.0/LightHouseWebApi.AssemblyInfo.cs
+src/LightHouseWebApi/obj/Debug/net8.0/LightHouseWebApi.AssemblyInfoInputs.cache
