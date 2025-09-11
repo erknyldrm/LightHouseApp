@@ -1,6 +1,7 @@
 using System;
 using FluentValidation;
 using FluentValidation.Results;
+using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
 using LightHouseDomain.Countries;
 using LightHouseDomain.Interfaces;
@@ -12,7 +13,7 @@ namespace LightHouseTests.Features.LightHouse;
 public class CreateLightHouseHandlerTests
 {
     private readonly Mock<ILightHouseRepository> _lightHouseRepositoryMock;
-    private readonly Mock<ICountryRegistry> _countryRegistryMock;
+    private readonly Mock<ICountryDataReader> _countryRegistryMock;
     private readonly Mock<IValidator<LightHouseDto>> _validatorMock;
 
     private readonly CreateLightHouseHandler _handler;
@@ -20,7 +21,7 @@ public class CreateLightHouseHandlerTests
     public CreateLightHouseHandlerTests()
     {
         _lightHouseRepositoryMock = new Mock<ILightHouseRepository>();
-        _countryRegistryMock = new Mock<ICountryRegistry>();
+        _countryRegistryMock = new Mock<ICountryDataReader>();
         _validatorMock = new Mock<IValidator<LightHouseDto>>();
 
         _handler = new CreateLightHouseHandler(_lightHouseRepositoryMock.Object, _countryRegistryMock.Object, _validatorMock.Object);
@@ -34,8 +35,7 @@ public class CreateLightHouseHandlerTests
 
         var country = new Country(27, "United Arab Emirates");
 
-        _countryRegistryMock.Setup(repo => repo.GetCountryById(dto.CountryId))
-            .Returns(country);
+        _countryRegistryMock.Setup(repo => repo.GetCountryByIdAsync(It.IsAny<int>()).GetAwaiter().GetResult()).Returns(country);
 
         _validatorMock.Setup(v => v.ValidateAsync(It.IsAny<LightHouseDto>(), default))
             .ReturnsAsync(new ValidationResult());
@@ -57,7 +57,7 @@ public class CreateLightHouseHandlerTests
         // Arrange
         var dto = new LightHouseDto(Guid.Empty, "Test Rock", 27, 24.5, 54.3);
 
-        _countryRegistryMock.Setup(repo => repo.GetCountryById(It.IsAny<int>())).Throws(new Exception("Country not found."));
+        _countryRegistryMock.Setup(repo => repo.GetCountryByIdAsync(It.IsAny<int>())).Throws(new Exception("Country not found."));
 
 
         // Act

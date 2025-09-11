@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TerminalApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d3a0a184335986b8dcaa440fe576a02576846fc7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd349dfa389e8acdd2484d876ef117cfc9e03534")]
 [assembly: System.Reflection.AssemblyProductAttribute("TerminalApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TerminalApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
