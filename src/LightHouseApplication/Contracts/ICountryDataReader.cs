@@ -6,8 +6,8 @@ namespace LightHouseApplication.Contracts;
 public interface ICountryDataReader
 {
     Task<Country> GetCountryByIdAsync(int id);
-    Country GetCountryByName(string name);
+    Task<Country> GetCountryByNameAsync(string name);
     Task<IReadOnlyList<Country>> GetAllCountriesAsync();
-    void AddCountry(int id, string name);
-    void RemoveCountry(int id);
+    Task AddCountryAsync(int id, string name);
+    Task RemoveCountryAsync(int id);
 }

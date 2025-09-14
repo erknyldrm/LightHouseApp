@@ -5,20 +5,14 @@ using LightHouseInfrastructure.Caching;
 
 namespace LightHouseData.Repositories;
 
-public class CachedCountryDataReader : ICountryDataReader
+public class CachedCountryDataReader(ICountryDataReader innerReader, ICacheService cacheService) : ICountryDataReader
 {
-    private readonly ICountryDataReader _innerReader;
-    private readonly ICacheService _cacheService;
+    private readonly ICountryDataReader _innerReader = innerReader;
+    private readonly ICacheService _cacheService = cacheService;
 
-    public CachedCountryDataReader(ICountryDataReader innerReader, ICacheService cacheService)
+    public async Task AddCountryAsync(int id, string name)
     {
-        _innerReader = innerReader;
-        _cacheService = cacheService;
-    }
-
-    public void AddCountry(int id, string name)
-    {
-        throw new NotImplementedException();
+        await _innerReader.AddCountryAsync(id, name);
     }
 
     public async Task<IReadOnlyList<Country>> GetAllCountriesAsync()
@@ -54,13 +48,13 @@ public class CachedCountryDataReader : ICountryDataReader
         return country;
     }
 
-    public Country GetCountryByName(string name)
+    public async Task<Country> GetCountryByNameAsync(string name)
     {
-        throw new NotImplementedException();
+        return await _innerReader.GetCountryByNameAsync(name);
     }
 
-    public void RemoveCountry(int id)
+    public async Task RemoveCountryAsync(int id)
     {
-        throw new NotImplementedException();
+        await _innerReader.RemoveCountryAsync(id);
     }
 }

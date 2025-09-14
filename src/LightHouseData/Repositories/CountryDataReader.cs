@@ -1,35 +1,44 @@
-using System;
 using LightHouseApplication.Contracts;
 using LightHouseDomain.Countries;
+using Dapper;
 
 namespace LightHouseData.Repositories;
 
-public class CountryDataReader(IEnumerable<Country> countries) : ICountryDataReader
+public class CountryDataReader(IDbConnectionFactory dbConnectionFactory) : ICountryDataReader
 {
-    private readonly Dictionary<int, Country> _countries = countries.ToDictionary(c => c.Id, c => c);
-
-    public void AddCountry(int id, string name)
+    public async Task AddCountryAsync(int id, string name)
     {
-        throw new NotImplementedException();
+        const string sql = "INSERT INTO country (id, name) VALUES (@Id, @Name)";
+        using var connection = dbConnectionFactory.CreateConnection();
+        await connection.ExecuteAsync(sql, new { Id = id, Name = name });
     }
-    public Task<IReadOnlyList<Country>> GetAllCountriesAsync()
+    public async Task<IReadOnlyList<Country>> GetAllCountriesAsync()
     {
-        return Task.FromResult((IReadOnlyList<Country>)[.. _countries.Values]);
-    }
+        const string sql = "SELECT id, name FROM country ORDER BY name";
+        using var connection = dbConnectionFactory.CreateConnection();
+        var rows = await connection.QueryAsync<Country>(sql);
 
-    public Task<Country> GetCountryByIdAsync(int id)
-    {
-        _countries.TryGetValue(id, out var country);
-        return Task.FromResult(country);
+        return rows.ToList().AsReadOnly();
     }
 
-    public Country GetCountryByName(string name)
+    public async Task<Country> GetCountryByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        const string sql = "SELECT id, name FROM country WHERE id = @Id";
+        using var connection = dbConnectionFactory.CreateConnection();
+        return await connection.QuerySingleOrDefaultAsync<Country>(sql, new { Id = id });
     }
 
-    public void RemoveCountry(int id)
+    public async Task<Country> GetCountryByNameAsync(string name)
     {
-        throw new NotImplementedException();
+        const string sql = "SELECT id, name FROM country WHERE name = @Name";
+        using var connection = dbConnectionFactory.CreateConnection();
+        return await connection.QuerySingleOrDefaultAsync<Country>(sql, new { Name = name });
+    }
+
+    public async Task RemoveCountryAsync(int id)
+    {
+        const string sql = "DELETE FROM country WHERE id = @Id";
+        using var connection = dbConnectionFactory.CreateConnection();
+        await connection.ExecuteAsync(sql, new { Id = id });
     }
 }
