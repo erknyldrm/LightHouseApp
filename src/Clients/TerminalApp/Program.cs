@@ -14,7 +14,7 @@ var services = new ServiceCollection()
 
 
 LightHouseApplication.DependencyInjection.AddApplicationServices(services);
-LightHouseInfrastructure.DependencyInjection.AddInfrastructureServices(services);
+LightHouseInfrastructure.DependencyInjection.AddInfrastructureServices(services, config);
 
 
 LightHouseData.DependencyInjection.AddLightHouseDataServices(services, provider =>

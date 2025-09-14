@@ -130,3 +130,6 @@
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/VaultSharp.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Microsoft.Extensions.Caching.Abstractions.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Microsoft.Extensions.Caching.Memory.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Microsoft.Extensions.Caching.StackExchangeRedis.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Pipelines.Sockets.Unofficial.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/StackExchange.Redis.dll
