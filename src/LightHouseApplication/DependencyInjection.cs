@@ -1,7 +1,10 @@
 using System;
 using FluentValidation;
+using LightHouseApplication.Common.Pipeline;
+using LightHouseApplication.Common.Pipeline.Behavior;
 using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
+using LightHouseApplication.Features.Models;
 using LightHouseApplication.Services;
 using LightHouseApplication.Validators;
 using LightHouseDomain.Countries;
@@ -21,13 +24,19 @@ public static class DependencyInjection
         }
 
         services.AddScoped<ILightHouseService, LightHouseService>();
-        services.AddScoped<UploadPhotoHandler>();
         services.AddScoped<IPhotoService, PhotoService>();
-        services.AddScoped<CreateLightHouseHandler>();
-        services.AddScoped<GetLightHousesHandler>();
-        //services.AddScoped<ICountryDataReader, CountryDataReader>();
-        services.AddScoped<IValidator<LightHouseDto>, LightHouseDtoValidator>();
 
+        services.AddScoped<PipelineDispatcher>();
+
+
+        //Todo: Register all handlers 
+
+
+        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
+        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ExceptionHandlingBehavior<,>));
+
+        services.AddScoped<IValidator<LightHouseDto>, LightHouseDtoValidator>();
+        //services.AddScoped<IValidator<PhotoDto>, PhotoDtoValidator>();
         return services;
     }
 }

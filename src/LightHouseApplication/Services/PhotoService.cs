@@ -1,16 +1,17 @@
+using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
+using LightHouseApplication.Features.Photo.Models;
 using LightHouseInfrastructure.Features.Photo;
 
 namespace LightHouseApplication.Services;
 
-public class PhotoService(UploadPhotoHandler uploadPhotoHandler) : IPhotoService
+public class PhotoService(PipelineDispatcher pipelineDispatcher) : IPhotoService
 {
-    private readonly UploadPhotoHandler _uploadPhotoHandler = uploadPhotoHandler;
 
-    public Task DeletePhotoAsync(Guid id)
+    public async Task DeletePhotoAsync(Guid id)
     {
-        throw new NotImplementedException();
+        await pipelineDispatcher.SendAsync<DeletePhotoRequest, bool>(new DeletePhotoRequest(id));
     }
 
     public Task<PhotoDto?> GetPhotoByIdAsync(Guid id)
@@ -25,10 +26,13 @@ public class PhotoService(UploadPhotoHandler uploadPhotoHandler) : IPhotoService
 
     public async Task<Guid> UploadPhotoAsync(PhotoDto photo, Stream fileContent)
     {
-        var result = await _uploadPhotoHandler.HandleAsync(photo, fileContent);
+        var request = new UploadPhotoRequest(photo, fileContent);
 
-        return result.IsSuccess 
-            ? result.Data 
-            : throw new Exception(result.ErrorMessage); 
+        var result = await pipelineDispatcher.SendAsync<UploadPhotoRequest, Guid>(request);
+
+        return result;
+        // return result.IsSuccess 
+        //     ? result.Data 
+        //     : throw new Exception(result.ErrorMessage); 
     }
 }

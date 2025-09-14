@@ -5,7 +5,7 @@ using LightHouseInfrastructure.Features.LightHouse;
 
 namespace LightHouseApplication.Services;
 
-public class LightHouseService(CreateLightHouseHandler createLightHouseHandler, GetLightHousesHandler getLightHousesHandler) : ILightHouseService
+internal class LightHouseService(CreateLightHouseHandler createLightHouseHandler, GetLightHousesHandler getLightHousesHandler) : ILightHouseService
 {
     private readonly CreateLightHouseHandler _createLightHouseHandler = createLightHouseHandler;
 
@@ -13,7 +13,7 @@ public class LightHouseService(CreateLightHouseHandler createLightHouseHandler, 
 
     public async Task<Guid> CreateLightHouseAsync(LightHouseDto lightHouseDto)
     {
-        var result = await _createLightHouseHandler.HandleAsync(lightHouseDto);
+        var result = await _createLightHouseHandler.HandleAsync(new Features.Models.CreateLightHouseRequest(lightHouseDto));
         if (!result.IsSuccess)
         {
             throw new Exception(result.ErrorMessage);
