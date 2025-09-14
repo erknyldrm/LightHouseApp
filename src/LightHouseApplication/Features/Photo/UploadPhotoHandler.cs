@@ -5,7 +5,7 @@ using LightHouseDomain.ValueObjects;
 
 namespace LightHouseInfrastructure.Features.Photo;
 
-public class UploadPhotoHandler(IPhotoStorageService photoStorageService, IPhotoRepository photoRepository)
+internal class UploadPhotoHandler(IPhotoStorageService photoStorageService, IPhotoRepository photoRepository)
 {
     private readonly IPhotoStorageService _photoStorageService = photoStorageService;
 

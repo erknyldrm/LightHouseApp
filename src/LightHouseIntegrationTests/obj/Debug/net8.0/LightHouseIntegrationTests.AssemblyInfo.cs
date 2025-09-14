@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LightHouseIntegrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+676a96220a41d438b4dade04c4667f1b4e6be315")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b225a5591e411ec9b7ead51457b991a3a451ffae")]
 [assembly: System.Reflection.AssemblyProductAttribute("LightHouseIntegrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LightHouseIntegrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,13 +1,15 @@
 using System;
 using FluentValidation;
 using LightHouseApplication.Common;
+using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Dtos;
 using LightHouseDomain.Interfaces;
 
 namespace LightHouseInfrastructure.Features.Comment;
 
 public class AddCommentHandler(ICommentRepository repository, IUserRepository userRepository,
-                               IPhotoRepository photoRepository, ICommentAuditor commentAuditor, IValidator<CommentDto> validator)
+                               IPhotoRepository photoRepository, ICommentAuditor commentAuditor, IValidator<CommentDto> validator) 
+                               //: IHandler<CommentDto, Result<Guid>>
 
 {
 

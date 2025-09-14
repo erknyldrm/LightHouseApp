@@ -15,7 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Add Application Services
-builder.Services.AddScoped<ILightHouseService, LightHouseService>();
+//builder.Services.AddScoped<ILightHouseService, LightHouseService>();
 //builder.Services.AddScoped<IPhotoService, PhotoService>();
 
 // Add Infrastructure Services

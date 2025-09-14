@@ -1,26 +1,28 @@
 using FluentValidation;
 using LightHouseApplication.Common;
+using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
+using LightHouseApplication.Features.Models;
 using LightHouseDomain.Countries;
 using LightHouseDomain.Interfaces;
 using LightHouseDomain.ValueObjects;
 
 namespace LightHouseInfrastructure.Features.LightHouse;
 
-public class CreateLightHouseHandler(ILightHouseRepository lightHouseRepository, ICountryDataReader countryDataReader, IValidator<LightHouseDto> validator)
-   
+internal class CreateLightHouseHandler(ILightHouseRepository lightHouseRepository, ICountryDataReader countryDataReader, IValidator<LightHouseDto> validator)
+    : IHandler<CreateLightHouseRequest, Result<Guid>>   
 {
     private readonly ILightHouseRepository _lightHouseRepository = lightHouseRepository;
     private readonly ICountryDataReader _countryDataReader = countryDataReader;
 
     private readonly IValidator<LightHouseDto> _validator = validator;
 
-    public async Task<Result<Guid>> HandleAsync(LightHouseDto lightHouseDto)
+   public async Task<Result<Guid>> HandleAsync(CreateLightHouseRequest request, CancellationToken cancellationToken = default)
     {
-        try
+       try
         {
-            var validationResult = await _validator.ValidateAsync(lightHouseDto);
+            var validationResult = await _validator.ValidateAsync(request.LightHouse);
             
             if (!validationResult.IsValid)
             {
@@ -30,14 +32,14 @@ public class CreateLightHouseHandler(ILightHouseRepository lightHouseRepository,
             }
 
 
-            var country = await  _countryDataReader.GetCountryByIdAsync(lightHouseDto.CountryId);
+            var country = await  _countryDataReader.GetCountryByIdAsync(request.LightHouse.CountryId);
             if (country is null)
                 return Result<Guid>.Fail("Country not found.");
 
-            var location = new Coordinates(lightHouseDto.Latitude, lightHouseDto.Longitude);
+            var location = new Coordinates(request.LightHouse.Latitude, request.LightHouse.Longitude);
 
             var lightHouse = new LightHouseDomain.Entities.LightHouse(
-                lightHouseDto.Name,
+                request.LightHouse.Name,
                 country,
                 location);
 

@@ -1,7 +1,9 @@
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/bin/Debug/net8.0/LightHouseInfrastructure.deps.json
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/bin/Debug/net8.0/LightHouseInfrastructure.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/bin/Debug/net8.0/LightHouseInfrastructure.pdb
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/bin/Debug/net8.0/LightHouseApplication.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/bin/Debug/net8.0/LightHouseDomain.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/bin/Debug/net8.0/LightHouseApplication.pdb
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/bin/Debug/net8.0/LightHouseDomain.pdb
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/obj/Debug/net8.0/LightHouseInfrastructure.csproj.AssemblyReference.cache
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/obj/Debug/net8.0/LightHouseInfrastructure.GeneratedMSBuildEditorConfig.editorconfig
@@ -14,5 +16,3 @@
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/obj/Debug/net8.0/refint/LightHouseInfrastructure.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/obj/Debug/net8.0/LightHouseInfrastructure.pdb
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/obj/Debug/net8.0/ref/LightHouseInfrastructure.dll
-/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/bin/Debug/net8.0/LightHouseApplication.dll
-/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseInfrastructure/bin/Debug/net8.0/LightHouseApplication.pdb

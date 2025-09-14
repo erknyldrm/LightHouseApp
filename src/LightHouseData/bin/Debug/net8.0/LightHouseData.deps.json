@@ -272,7 +272,8 @@
         "dependencies": {
           "FluentValidation": "12.0.0",
           "LightHouseDomain": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection": "9.0.8"
+          "Microsoft.Extensions.DependencyInjection": "9.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.9"
         },
         "runtime": {
           "LightHouseApplication.dll": {}
