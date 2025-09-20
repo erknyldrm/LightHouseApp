@@ -1,6 +1,8 @@
 using System;
 using FluentValidation;
 using FluentValidation.Results;
+using LightHouseApplication.Common;
+using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
 using LightHouseDomain.Countries;
@@ -17,7 +19,7 @@ public class CreateLightHouseHandlerTests
     private readonly Mock<IValidator<LightHouseDto>> _validatorMock;
 
     private readonly CreateLightHouseHandler _handler;
-
+private readonly IPipelineBehavior<CreateLightHouseRequest, Result<Guid>> _performanceBehavior; 
     public CreateLightHouseHandlerTests()
     {
         _lightHouseRepositoryMock = new Mock<ILightHouseRepository>();

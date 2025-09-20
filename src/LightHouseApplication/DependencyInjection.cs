@@ -1,5 +1,6 @@
 using System;
 using FluentValidation;
+using LightHouseApplication.Common;
 using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Common.Pipeline.Behavior;
 using LightHouseApplication.Contracts;
@@ -30,7 +31,8 @@ public static class DependencyInjection
 
 
         //Todo: Register all handlers 
-
+        services.AddScoped<IHandler<CreateLightHouseRequest, Result<Guid>>, CreateLightHouseHandler>(); 
+        
 
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ExceptionHandlingBehavior<,>));

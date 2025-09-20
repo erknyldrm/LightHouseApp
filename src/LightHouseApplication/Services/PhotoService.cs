@@ -1,3 +1,4 @@
+using LightHouseApplication.Common;
 using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
@@ -28,11 +29,10 @@ public class PhotoService(PipelineDispatcher pipelineDispatcher) : IPhotoService
     {
         var request = new UploadPhotoRequest(photo, fileContent);
 
-        var result = await pipelineDispatcher.SendAsync<UploadPhotoRequest, Guid>(request);
+        var result = await pipelineDispatcher.SendAsync<UploadPhotoRequest, Result<Guid>>(request);
 
-        return result;
-        // return result.IsSuccess 
-        //     ? result.Data 
-        //     : throw new Exception(result.ErrorMessage); 
+        return result.IsSuccess 
+             ? result.Data 
+             : throw new Exception(result.ErrorMessage); 
     }
 }

@@ -7,9 +7,11 @@ using LightHouseDomain.Interfaces;
 
 namespace LightHouseInfrastructure.Features.Comment;
 
-public class AddCommentHandler(ICommentRepository repository, IUserRepository userRepository,
-                               IPhotoRepository photoRepository, ICommentAuditor commentAuditor, IValidator<CommentDto> validator) 
-                               //: IHandler<CommentDto, Result<Guid>>
+internal record AddCommentRequest(CommentDto Comment);
+
+internal class AddCommentHandler(ICommentRepository repository, IUserRepository userRepository,
+                               IPhotoRepository photoRepository, ICommentAuditor commentAuditor, IValidator<CommentDto> validator)
+: IHandler<AddCommentRequest, Result<Guid>>
 
 {
 
@@ -19,8 +21,9 @@ public class AddCommentHandler(ICommentRepository repository, IUserRepository us
     private readonly ICommentAuditor _commentAuditor = commentAuditor;
     private readonly IValidator<CommentDto> _validator = validator;
 
-    public async Task<Result<Guid>> HandleAsync(CommentDto dto)
+    public async Task<Result<Guid>> HandleAsync(AddCommentRequest request, CancellationToken cancellationToken)
     {
+        var dto = request.Comment;
         var validation = _validator.Validate(dto);
         if (!validation.IsValid)
         {
