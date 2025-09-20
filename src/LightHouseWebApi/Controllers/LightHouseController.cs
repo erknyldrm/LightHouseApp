@@ -44,11 +44,32 @@ public class LightHouseController : ControllerBase
         try
         {
             var newId = await _lightHouseService.CreateLightHouseAsync(request.LightHouseDto);
-            return CreatedAtAction(nameof(GetByIdAsync), new { id = newId }, newId );
+            return CreatedAtAction(nameof(GetByIdAsync), new { id = newId }, newId);
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error occurred while creating lighthouse");
+            return StatusCode(500, "Internal server error");
+        }
+    }
+
+    [HttpGet("top")]
+    public async Task<IActionResult> GetTopAsync(int count)
+    {
+        try
+        {
+            var result = await _lightHouseService.GetTopAsync(new TopDto(count));
+            if (!result.IsSuccess)
+            {
+                _logger.LogError("Error occurred while getting top lighthouses: {ErrorMessage}", result.ErrorMessage);
+                return StatusCode(500, "Internal server error");
+            }
+
+            return Ok(result.Data);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while getting top lighthouses");
             return StatusCode(500, "Internal server error");
         }
     }

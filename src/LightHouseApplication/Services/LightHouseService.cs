@@ -2,6 +2,7 @@ using LightHouseApplication.Common;
 using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
+using LightHouseApplication.Features.LightHouse;
 using LightHouseApplication.Features.Models;
 
 namespace LightHouseApplication.Services;
@@ -48,6 +49,11 @@ internal class LightHouseService(PipelineDispatcher pipelineDispatcher) : ILight
         var result = await _pipelineDispatcher.SendAsync<GetAllLightHousesRequest, Result<IEnumerable<LightHouseDto>>>(new GetAllLightHousesRequest());
 
         return result.IsSuccess ? result.Data : throw new Exception(result.ErrorMessage);   
+    }
+
+    public async Task<Result<IEnumerable<LightHouseTopDto>>> GetTopAsync(TopDto topDto)
+    {
+        return await _pipelineDispatcher.SendAsync<GetTopLightHousesRequest, Result<IEnumerable<LightHouseTopDto>>>(new GetTopLightHousesRequest(topDto.Count));
     }
 
     public Task<LightHouseDto> UpdateLightHouseAsync(Guid id, LightHouseDto lightHouseDto)

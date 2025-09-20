@@ -1,4 +1,5 @@
 
+using LightHouseApplication.Common;
 using LightHouseApplication.Dtos;
 
 namespace LightHouseApplication.Contracts;
@@ -11,5 +12,6 @@ public interface ILightHouseService
     Task<Guid> CreateLightHouseAsync(LightHouseDto lightHouseDto);
     Task<LightHouseDto> UpdateLightHouseAsync(Guid id, LightHouseDto lightHouseDto);
     Task<Guid> DeleteLightHouseAsync(Guid id);
+    Task<Result<IEnumerable<LightHouseTopDto>>> GetTopAsync(TopDto topDto);
 }
 

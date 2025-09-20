@@ -6,7 +6,7 @@ using LightHouseDomain.ValueObjects;
 
 namespace LightHouseData;
 
-public class LightHouseRepository(IDbConnectionFactory connectionFactory) : ILightHouseRepository
+public partial class LightHouseRepository(IDbConnectionFactory connectionFactory) : ILightHouseRepository
 {
 
     private readonly IDbConnectionFactory _connectionFactory = connectionFactory;
@@ -32,7 +32,9 @@ public class LightHouseRepository(IDbConnectionFactory connectionFactory) : ILig
 
     public Task DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        string query = "DELETE FROM Lighthouses WHERE id = @Id";
+        using var connection = _connectionFactory.CreateConnection();
+        return connection.ExecuteAsync(query, new { Id = id });
     }
 
     public Task<IEnumerable<LightHouse>> GetAllAsync()
@@ -67,6 +69,7 @@ public class LightHouseRepository(IDbConnectionFactory connectionFactory) : ILig
 
         return result.FirstOrDefault();
     }
+
 
     public Task UpdateAsync(LightHouse entity)
     {
