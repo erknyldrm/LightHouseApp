@@ -1,13 +1,12 @@
 
 using LightHouseApplication.Dtos;
-using LightHouseApplication.Features.Models;
 
 namespace LightHouseApplication.Contracts;
 
 
-internal interface ILightHouseService
+public interface ILightHouseService
 {
-    Task<IEnumerable<GetAllLightHousesRequest>> GetLightHousesAsync();
+    Task<IEnumerable<LightHouseDto>> GetLightHousesAsync();
     Task<LightHouseDto?> GetLightHouseByIdAsync(Guid id);
     Task<Guid> CreateLightHouseAsync(LightHouseDto lightHouseDto);
     Task<LightHouseDto> UpdateLightHouseAsync(Guid id, LightHouseDto lightHouseDto);

@@ -19,8 +19,8 @@ public static class DependencyInjection
         services.AddScoped<IPhotoStorageService, PhotoStorageService>();
         services.AddScoped<ICommentAuditor, ExternalCommentAuditor>();
 
-        services.AddScoped<ISecretManager, VaultSecretManager>();
-        services.AddScoped<VaultConfigurationService>();
+        services.AddSingleton<ISecretManager, VaultSecretManager>();
+        services.AddSingleton<VaultConfigurationService>();
 
 
         services.AddScoped(provider =>
