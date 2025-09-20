@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <Folder Include="Test/" />
+    <InternalVisibleTo Include="LightHouseTests" />
+    <InternalVisibleTo Include="LightHouseIntegrationTests" />
   </ItemGroup>
 
   <PropertyGroup>

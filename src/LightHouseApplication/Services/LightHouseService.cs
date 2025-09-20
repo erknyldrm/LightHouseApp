@@ -1,19 +1,18 @@
-using System;
+using LightHouseApplication.Common;
+using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
-using LightHouseInfrastructure.Features.LightHouse;
+using LightHouseApplication.Features.Models;
 
 namespace LightHouseApplication.Services;
 
-internal class LightHouseService(CreateLightHouseHandler createLightHouseHandler, GetLightHousesHandler getLightHousesHandler) : ILightHouseService
+internal class LightHouseService(PipelineDispatcher pipelineDispatcher) : ILightHouseService
 {
-    private readonly CreateLightHouseHandler _createLightHouseHandler = createLightHouseHandler;
-
-    private readonly GetLightHousesHandler _getLightHousesHandler = getLightHousesHandler;
+    private readonly PipelineDispatcher _pipelineDispatcher = pipelineDispatcher;
 
     public async Task<Guid> CreateLightHouseAsync(LightHouseDto lightHouseDto)
     {
-        var result = await _createLightHouseHandler.HandleAsync(new Features.Models.CreateLightHouseRequest(lightHouseDto));
+        var result = await _pipelineDispatcher.SendAsync<CreateLightHouseRequest, Result<Guid>>(new CreateLightHouseRequest(lightHouseDto));
         if (!result.IsSuccess)
         {
             throw new Exception(result.ErrorMessage);
@@ -21,9 +20,16 @@ internal class LightHouseService(CreateLightHouseHandler createLightHouseHandler
         return result.Data;
     }
 
-    public Task DeleteLightHouseAsync(Guid id)
+    public async Task<Guid> DeleteLightHouseAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var result = await _pipelineDispatcher.SendAsync<DeleteLightHouseRequest, Result<Guid>>(new DeleteLightHouseRequest(id));
+
+        if (!result.IsSuccess)
+        {
+            throw new Exception(result.ErrorMessage);
+        }
+
+        return result.Data;
     }
 
     public Task<LightHouseDto?> GetLightHouseByIdAsync(Guid id)
@@ -31,9 +37,9 @@ internal class LightHouseService(CreateLightHouseHandler createLightHouseHandler
         throw new NotImplementedException();
     }
 
-    public async Task<IEnumerable<LightHouseDto>> GetLightHousesAsync()
+    public async Task<IEnumerable<GetAllLightHousesRequest>> GetLightHousesAsync()
     {
-        var result = await _getLightHousesHandler.HandleAsync();
+        var result = await _pipelineDispatcher.SendAsync<GetAllLightHousesRequest, Result<IEnumerable<GetAllLightHousesRequest>>>(new GetAllLightHousesRequest());
 
         return result.IsSuccess ? result.Data : throw new Exception(result.ErrorMessage);   
     }
