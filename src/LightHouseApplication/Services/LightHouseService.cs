@@ -2,6 +2,7 @@ using LightHouseApplication.Common;
 using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
+using LightHouseApplication.Features.LightHouse;
 using LightHouseApplication.Features.Models;
 
 namespace LightHouseApplication.Services;
@@ -26,22 +27,33 @@ internal class LightHouseService(PipelineDispatcher pipelineDispatcher) : ILight
 
         if (!result.IsSuccess)
         {
-            throw new Exception(result.ErrorMessage);
+            return Guid.Empty; // todo: add not found vs error distinction
         }
 
         return result.Data;
     }
 
-    public Task<LightHouseDto?> GetLightHouseByIdAsync(Guid id)
+    public async Task<LightHouseDto?> GetLightHouseByIdAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var result = await _pipelineDispatcher.SendAsync<GetLightHouseByIdRequest, Result<LightHouseDto?>>(new GetLightHouseByIdRequest(id));
+        if (!result.IsSuccess)
+        {
+            return null; // todo: add not found vs error distinction
+        }
+
+        return result.Data;
     }
 
-    public async Task<IEnumerable<GetAllLightHousesRequest>> GetLightHousesAsync()
+    public async Task<IEnumerable<LightHouseDto>> GetLightHousesAsync()
     {
-        var result = await _pipelineDispatcher.SendAsync<GetAllLightHousesRequest, Result<IEnumerable<GetAllLightHousesRequest>>>(new GetAllLightHousesRequest());
+        var result = await _pipelineDispatcher.SendAsync<GetAllLightHousesRequest, Result<IEnumerable<LightHouseDto>>>(new GetAllLightHousesRequest());
 
         return result.IsSuccess ? result.Data : throw new Exception(result.ErrorMessage);   
+    }
+
+    public async Task<Result<IEnumerable<LightHouseTopDto>>> GetTopAsync(TopDto topDto)
+    {
+        return await _pipelineDispatcher.SendAsync<GetTopLightHousesRequest, Result<IEnumerable<LightHouseTopDto>>>(new GetTopLightHousesRequest(topDto.Count));
     }
 
     public Task<LightHouseDto> UpdateLightHouseAsync(Guid id, LightHouseDto lightHouseDto)

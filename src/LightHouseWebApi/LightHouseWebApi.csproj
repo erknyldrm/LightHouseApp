@@ -18,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LightHouseApplication\LightHouseApplication.csproj" />
-    <ProjectReference Include="..\LightHouseInfrastructure\LightHouseInfrastructure.csproj" />
-    <ProjectReference Include="..\LightHouseData\LightHouseData.csproj" />
+    <ProjectReference Include="../LightHouseApplication/LightHouseApplication.csproj" />
+    <ProjectReference Include="../LightHouseData/LightHouseData.csproj" />
+    <ProjectReference Include="../LightHouseInfrastructure/LightHouseInfrastructure.csproj" />
   </ItemGroup>
 
 </Project>

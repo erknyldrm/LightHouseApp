@@ -5,6 +5,7 @@ using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Common.Pipeline.Behavior;
 using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
+using LightHouseApplication.Features.LightHouse;
 using LightHouseApplication.Features.Models;
 using LightHouseApplication.Services;
 using LightHouseApplication.Validators;
@@ -32,7 +33,7 @@ public static class DependencyInjection
 
         //Todo: Register all handlers 
         services.AddScoped<IHandler<CreateLightHouseRequest, Result<Guid>>, CreateLightHouseHandler>(); 
-        
+        services.AddScoped<IHandler<GetTopLightHousesRequest, Result<IEnumerable<LightHouseTopDto>>>, GetTopLightHousesHandler>();    
 
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ExceptionHandlingBehavior<,>));
