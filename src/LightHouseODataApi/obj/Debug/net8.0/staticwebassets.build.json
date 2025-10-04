@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "gLsI6dovCDbHVuzu+wfNNqZ+Nie7967dRf5KNtxc3Kc=",
+  "Source": "LightHouseODataApi",
+  "BasePath": "_content/LightHouseODataApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

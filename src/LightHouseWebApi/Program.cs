@@ -1,8 +1,9 @@
 
+using LightHouseApplication;
+using LightHouseData;
 using LightHouseDomain.Interfaces;
+using LightHouseInfrastructure;
 using LightHouseInfrastructure.Auditors;
-using LightHouseInfrastructure.Configuration;
-using LightHouseInfrastructure.SecretManager;
 using LightHouseInfrastructure.Storage;
 
 
@@ -18,25 +19,14 @@ var config = new ConfigurationBuilder()
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-LightHouseApplication.DependencyInjection.AddApplicationServices(builder.Services);
-LightHouseInfrastructure.DependencyInjection.AddInfrastructureServices(builder.Services, config);
+builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices(builder.Configuration)
+.WithSecretVault()
+.WithPhotoStorage()
+.WithCaching()
+.WithExternals();
 
-LightHouseData.DependencyInjection.AddLightHouseDataServices(builder.Services, provider =>
-{
-  var vault = provider.GetRequiredService<VaultConfigurationService>();
-
-  try
-  {
-    return vault.GetDatabaseConnectionStringAsync().GetAwaiter().GetResult();
-  }
-  catch (Exception ex)
-  {
-    var logger = provider.GetRequiredService<ILogger<Program>>();
-    logger.LogError(ex, "Failed to retrieve the database connection string from Vault.");
-    return String.Empty;
-  }
-});
-
+builder.Services.AddLightHouseDataServices();
 
 builder.Services.Configure<MinioSettings>(config.GetSection("Minio"));
 builder.Services.AddHttpClient<ICommentAuditor, ExternalCommentAuditor>();

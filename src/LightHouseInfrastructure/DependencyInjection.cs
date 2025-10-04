@@ -14,16 +14,26 @@ namespace LightHouseInfrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
+    public static InfrastructureBuilder AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<IPhotoStorageService, PhotoStorageService>();
-        services.AddScoped<ICommentAuditor, ExternalCommentAuditor>();
+        return new InfrastructureBuilder(services, configuration);
+    }
+}
 
+public class InfrastructureBuilder(IServiceCollection services, IConfiguration configuration)
+{
+    public InfrastructureBuilder WithSecretVault()
+    {
         services.AddSingleton<ISecretManager, VaultSecretManager>();
         services.AddSingleton<VaultConfigurationService>();
+        return this;
+    }
 
+    public InfrastructureBuilder WithPhotoStorage()
+    {
+        services.AddScoped<IPhotoStorageService, PhotoStorageService>();
 
-        services.AddScoped(provider =>
+        services.AddSingleton(provider =>
         {
             var config = provider.GetRequiredService<IOptions<MinioSettings>>().Value;
 
@@ -34,7 +44,17 @@ public static class DependencyInjection
                 .Build();
         });
 
+        return this;
+    }
+
+    public InfrastructureBuilder WithCaching()
+    {
         var useRedis = configuration.GetValue<bool>("Caching:UseRedis");
+        return WithCaching(useRedis);
+    }
+
+    public InfrastructureBuilder WithCaching(bool useRedis = false)
+    {
         if (useRedis)
         {
             services.AddStackExchangeRedisCache(options =>
@@ -50,7 +70,12 @@ public static class DependencyInjection
             services.AddSingleton<ICacheService, MemoryCacheService>();
         }
 
-        return services;
+        return this;
     }
 
+    public InfrastructureBuilder WithExternals()
+    {
+        services.AddScoped<ICommentAuditor, ExternalCommentAuditor>();
+        return this;
+    }
 }

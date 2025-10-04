@@ -9,16 +9,14 @@ using LightHouseApplication.Features.LightHouse;
 using LightHouseApplication.Features.Models;
 using LightHouseApplication.Services;
 using LightHouseApplication.Validators;
-using LightHouseDomain.Countries;
 using LightHouseInfrastructure.Features.LightHouse;
-using LightHouseInfrastructure.Features.Photo;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LightHouseApplication;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddApplicationServices(IServiceCollection services)
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         if (services is null)
         {
