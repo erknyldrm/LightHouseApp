@@ -1,5 +1,6 @@
 using System;
 using LightHouseApplication.Contracts;
+using LightHouseApplication.Contracts.Repositories;
 using LightHouseData.Repositories;
 using LightHouseDomain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,6 +47,7 @@ public class DependencyInjection
         services.AddScoped<ILightHouseRepository, LightHouseRepository>();
         services.AddScoped<IPhotoRepository, PhotoRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ILightHouseODataRepository, LightHouseODataRepository>();
         services.AddScoped<ICommentRepository, CommentRepository>();
         services.AddScoped<CountryDataReader>();
 

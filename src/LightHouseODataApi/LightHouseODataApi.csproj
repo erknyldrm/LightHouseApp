@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>LightHouseODataApi</RootNamespace>
+    <AssemblyName>LightHouseODataApi</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OData" Version="9.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../LightHouseApplication/LightHouseApplication.csproj" />
+    <ProjectReference Include="../LightHouseData/LightHouseData.csproj" />
+    <ProjectReference Include="../LightHouseInfrastructure/LightHouseInfrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
