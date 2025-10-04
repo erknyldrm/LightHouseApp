@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.OData;
 using Microsoft.OData.Edm;
-using LightHouseData;
 using LightHouseInfrastructure;
-using LightHouseInfrastructure.Storage;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,12 +24,13 @@ builder.Services.AddControllers().AddOData(opt =>
     .AddRouteComponents("odata", GetEdmModel())
 );
 
-//builder.Services.AddData(); 
-builder.Services.AddInfrastructureServices(builder.Configuration);
-//builder.Services.AddLightHouseDataServices(builder.Configuration);
-builder.Services.Configure<MinioSettings>(builder.Configuration.GetSection("Minio"));
-builder.Services.AddHttpClient();
+builder.Services
+    .AddInfrastructureServices(builder.Configuration)
+    .WithSecretVault();
+   // .Build();
 
+
+//builder.Services.AddLightHouseDataServices(builder.Configuration);
 
 var app = builder.Build();
 
@@ -38,4 +38,4 @@ app.UseHttpsRedirection();
 
 app.MapControllers();
 
-app.Run();
+await app.RunAsync();

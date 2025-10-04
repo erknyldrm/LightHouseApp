@@ -4,14 +4,13 @@ using LightHouseApplication.Contracts.Repositories;
 using LightHouseData.Repositories;
 using LightHouseDomain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
-using Npgsql.Replication;
 
 namespace LightHouseData;
 
-public class DependencyInjection
+public static class DependencyInjection
 {
 
-    public static IServiceCollection AddLightHouseDataServices(IServiceCollection services, string connectionString)
+    public static IServiceCollection AddLightHouseDataServices(this IServiceCollection services, string connectionString)
     {
         ArgumentNullException.ThrowIfNull(services);
 
@@ -42,7 +41,7 @@ public class DependencyInjection
         return services;
     }
 
-    private static void AddLightHouseDataServices(IServiceCollection services)
+    public static void AddLightHouseDataServices(this IServiceCollection services)
     {
         services.AddScoped<ILightHouseRepository, LightHouseRepository>();
         services.AddScoped<IPhotoRepository, PhotoRepository>();
