@@ -1,8 +1,11 @@
 using System;
+using Keycloak.AuthServices.Authentication;
+using Keycloak.AuthServices.Authorization;
 using LightHouseDomain.Interfaces;
 using LightHouseInfrastructure.Auditors;
 using LightHouseInfrastructure.Caching;
 using LightHouseInfrastructure.Configuration;
+using LightHouseInfrastructure.Identity;
 using LightHouseInfrastructure.SecretManager;
 using LightHouseInfrastructure.Storage;
 using Microsoft.Extensions.Configuration;
@@ -76,6 +79,41 @@ public class InfrastructureBuilder(IServiceCollection services, IConfiguration c
     public InfrastructureBuilder WithExternals()
     {
         services.AddScoped<ICommentAuditor, ExternalCommentAuditor>();
+        return this;
+    }
+
+    public InfrastructureBuilder WithKeycloakAuthentication()
+    {
+        services.AddKeycloakWebApiAuthentication(options =>
+        {
+            using var scope = services.BuildServiceProvider();
+
+            var vaultConfigService = scope.GetRequiredService<VaultConfigurationService>();
+
+            if (vaultConfigService != null)
+            {
+                var keycloakSettings = scope.GetRequiredService<IOptions<KeycloakSettings>>().Value;
+
+                options.Realm = keycloakSettings.Realm;
+                options.AuthServerUrl = keycloakSettings.Authority;
+                options.Audience = keycloakSettings.Audience;
+                options.AuthServerUrl = keycloakSettings.Authority;
+                options.SslRequired = keycloakSettings.RequireHttpsMetadata.ToString(); 
+                options.VerifyTokenAudience = keycloakSettings.ValidateAudience;
+                options.TokenClockSkew = TimeSpan.FromSeconds(keycloakSettings.ClockSkew);
+                /*...*/
+            }
+        });
+
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("ApiScope", policy =>
+            {
+                policy.RequireAuthenticatedUser();
+                policy.RequireRealmRoles("webapi-users");
+            });
+        }).AddKeycloakAuthorization();
+
         return this;
     }
 }

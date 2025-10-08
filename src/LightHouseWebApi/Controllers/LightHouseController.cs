@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LightHouseWebApi.Controllers;
 
@@ -39,6 +40,7 @@ public class LightHouseController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Policy = "ApiScope")]
     public async Task<IActionResult> CreateAsync([FromBody] CreateLightHouseRequest request)
     {
         try
