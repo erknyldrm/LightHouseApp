@@ -1,5 +1,6 @@
 using System;
 using Keycloak.AuthServices.Authentication;
+using Keycloak.AuthServices.Authorization;
 using LightHouseDomain.Interfaces;
 using LightHouseInfrastructure.Auditors;
 using LightHouseInfrastructure.Caching;
@@ -109,9 +110,10 @@ public class InfrastructureBuilder(IServiceCollection services, IConfiguration c
             options.AddPolicy("ApiScope", policy =>
             {
                 policy.RequireAuthenticatedUser();
-                policy.RequireClaim("scope", "lighthouseapi");
+                policy.RequireRealmRoles("webapi-users");
             });
-        });
+        }).AddKeycloakAuthorization();
+
         return this;
     }
 }

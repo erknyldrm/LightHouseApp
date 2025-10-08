@@ -24,7 +24,8 @@ builder.Services.AddInfrastructureServices(builder.Configuration)
 .WithSecretVault()
 .WithPhotoStorage()
 .WithCaching()
-.WithExternals();
+.WithExternals()
+.WithKeycloakAuthentication();
 
 builder.Services.AddLightHouseDataServices();
 
