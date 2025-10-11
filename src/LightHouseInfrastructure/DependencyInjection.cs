@@ -1,4 +1,5 @@
 using System;
+using Elastic.Serilog.Sinks;
 using Keycloak.AuthServices.Authentication;
 using Keycloak.AuthServices.Authorization;
 using LightHouseDomain.Interfaces;
@@ -10,8 +11,10 @@ using LightHouseInfrastructure.SecretManager;
 using LightHouseInfrastructure.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Minio;
+using Serilog;
 
 namespace LightHouseInfrastructure;
 
@@ -25,6 +28,7 @@ public static class DependencyInjection
 
 public class InfrastructureBuilder(IServiceCollection services, IConfiguration configuration)
 {
+   
     public InfrastructureBuilder WithSecretVault()
     {
         services.AddSingleton<ISecretManager, VaultSecretManager>();
@@ -98,7 +102,7 @@ public class InfrastructureBuilder(IServiceCollection services, IConfiguration c
                 options.AuthServerUrl = keycloakSettings.Authority;
                 options.Audience = keycloakSettings.Audience;
                 options.AuthServerUrl = keycloakSettings.Authority;
-                options.SslRequired = keycloakSettings.RequireHttpsMetadata.ToString(); 
+                options.SslRequired = keycloakSettings.RequireHttpsMetadata.ToString();
                 options.VerifyTokenAudience = keycloakSettings.ValidateAudience;
                 options.TokenClockSkew = TimeSpan.FromSeconds(keycloakSettings.ClockSkew);
                 /*...*/
@@ -116,4 +120,38 @@ public class InfrastructureBuilder(IServiceCollection services, IConfiguration c
 
         return this;
     }
+
+ public InfrastructureBuilder ElasticSearchLogging(IHostEnvironment environment)
+    {
+        var elasticSearchSettings = new ElasticSearchSettings();
+        configuration.GetSection("ElasticSearchSetttings").Bind(elasticSearchSettings);
+
+        var loggerConfiguration = new LoggerConfiguration()
+            .Enrich
+            .FromLogContext()
+            .WriteTo.Console()
+            .WriteTo.Elasticsearch([
+                new Uri(elasticSearchSettings.Url)
+            ],
+            options =>
+            {
+                options.DataStream = new("lighthouse-logs");
+            });
+
+            if (environment.IsProduction())
+            {
+                loggerConfiguration = loggerConfiguration.MinimumLevel.Information();
+            }
+            else
+            {
+                loggerConfiguration = loggerConfiguration.MinimumLevel.Debug();
+            }
+
+            Log.Logger = loggerConfiguration.CreateLogger();
+
+        return this;
+    }
+   
+    
+    public IServiceCollection Build() => services;
 }

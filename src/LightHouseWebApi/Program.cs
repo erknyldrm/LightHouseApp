@@ -5,7 +5,7 @@ using LightHouseDomain.Interfaces;
 using LightHouseInfrastructure;
 using LightHouseInfrastructure.Auditors;
 using LightHouseInfrastructure.Storage;
-
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +25,11 @@ builder.Services.AddInfrastructureServices(builder.Configuration)
 .WithPhotoStorage()
 .WithCaching()
 .WithExternals()
-.WithKeycloakAuthentication();
+.WithKeycloakAuthentication()
+.ElasticSearchLogging(builder.Environment)
+.Build();
+
+builder.Host.UseSerilog();
 
 builder.Services.AddLightHouseDataServices();
 
