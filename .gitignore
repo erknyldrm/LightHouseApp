@@ -177,3 +177,15 @@ src/LightHouseIntegrationTests/obj/Debug/net8.0/LightHouseIntegrationTests.Assem
 src/LightHouseIntegrationTests/obj/Debug/net8.0/LightHouseIntegrationTests.AssemblyInfoInputs.cache
 src/LightHouseWebApi/obj/Debug/net8.0/LightHouseWebApi.AssemblyInfo.cs
 src/LightHouseWebApi/obj/Debug/net8.0/LightHouseWebApi.AssemblyInfoInputs.cache
+src/Clients/TerminalApp/obj/Debug/net8.0/TerminalApp.AssemblyInfoInputs.cache
+src/Clients/TerminalApp/obj/Debug/net8.0/TerminalApp.csproj.AssemblyReference.cache
+src/LightHouseApplication/obj/Debug/net8.0/LightHouseApplication.assets.cache
+src/LightHouseData/obj/Debug/net8.0/LightHouseData.AssemblyInfoInputs.cache
+src/LightHouseData/obj/Debug/net8.0/LightHouseData.assets.cache
+src/LightHouseDomain/obj/Debug/net8.0/LightHouseDomain.assets.cache
+src/LightHouseInfrastructure/obj/Debug/net8.0/LightHouseInfrastructure.assets.cache
+src/LightHouseIntegrationTests/obj/Debug/net8.0/LightHouseIntegrationTests.csproj.AssemblyReference.cache
+src/LightHouseODataApi/obj/Debug/net8.0/LightHouseODataApi.AssemblyInfo.cs
+src/LightHouseODataApi/obj/Debug/net8.0/LightHouseODataApi.AssemblyInfoInputs.cache
+src/LightHouseODataApi/obj/Debug/net8.0/LightHouseODataApi.csproj.AssemblyReference.cache
+src/LightHouseWebApi/obj/Debug/net8.0/LightHouseWebApi.csproj.AssemblyReference.cache
