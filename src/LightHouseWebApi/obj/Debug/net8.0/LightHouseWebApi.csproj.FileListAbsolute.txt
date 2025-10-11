@@ -159,3 +159,16 @@
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/System.Text.Encodings.Web.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/System.Text.Json.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Elastic.Channels.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Elastic.CommonSchema.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Elastic.CommonSchema.Serilog.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Elastic.Ingest.Elasticsearch.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Elastic.Ingest.Elasticsearch.CommonSchema.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Elastic.Ingest.Transport.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Elastic.Serilog.Sinks.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Elastic.Transport.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Microsoft.Extensions.Hosting.Abstractions.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Serilog.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Serilog.Extensions.Hosting.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Serilog.Extensions.Logging.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Serilog.Sinks.Console.dll
