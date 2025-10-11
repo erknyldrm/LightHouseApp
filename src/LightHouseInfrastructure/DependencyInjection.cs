@@ -8,6 +8,7 @@ using LightHouseInfrastructure.Caching;
 using LightHouseInfrastructure.Configuration;
 using LightHouseInfrastructure.Identity;
 using LightHouseInfrastructure.SecretManager;
+using LightHouseInfrastructure.Services;
 using LightHouseInfrastructure.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +33,9 @@ public class InfrastructureBuilder(IServiceCollection services, IConfiguration c
     public InfrastructureBuilder WithSecretVault()
     {
         services.AddSingleton<ISecretManager, VaultSecretManager>();
-        services.AddSingleton<VaultConfigurationService>();
+        // services.AddSingleton<VaultConfigurationService>();
+        services.AddSingleton<CachedConfigurationService>();
+        services.AddHostedService<HostedConfigurationService>();
         return this;
     }
 

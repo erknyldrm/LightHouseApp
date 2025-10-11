@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LightHouseODataApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be43916c5ad06b8b34555e2dfc05e80771295ccb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad08da9a2385ae29a62638a6c15ec340e611f4ba")]
 [assembly: System.Reflection.AssemblyProductAttribute("LightHouseODataApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LightHouseODataApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

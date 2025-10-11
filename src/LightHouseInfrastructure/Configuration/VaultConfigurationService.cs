@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace LightHouseInfrastructure.Configuration;
 
+[Obsolete("This class is deprecated and will be removed in future versions. Please use CachedConfigurationService instead.")]
 public class VaultConfigurationService(ISecretManager secretManager, ILogger<VaultConfigurationService> logger)
 {
     private readonly ISecretManager _secretManager = secretManager;
