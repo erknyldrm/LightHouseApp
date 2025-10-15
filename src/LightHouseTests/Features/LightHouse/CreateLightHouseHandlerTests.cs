@@ -4,6 +4,7 @@ using FluentValidation.Results;
 using LightHouseApplication.Common;
 using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Contracts;
+using LightHouseApplication.Contracts.Repositories;
 using LightHouseApplication.Dtos;
 using LightHouseDomain.Countries;
 using LightHouseDomain.Interfaces;
@@ -37,7 +38,7 @@ private readonly IPipelineBehavior<CreateLightHouseRequest, Result<Guid>> _perfo
 
         var country = new Country(27, "United Arab Emirates");
 
-        _countryRegistryMock.Setup(repo => repo.GetCountryByIdAsync(It.IsAny<int>()).GetAwaiter().GetResult()).Returns(country);
+        _countryRegistryMock.Setup(repo => repo.GetCountryByIdAsync(It.IsAny<int>()).GetAwaiter().GetResult()).Returns(Result<Country>.Ok(country));
 
         _validatorMock.Setup(v => v.ValidateAsync(It.IsAny<LightHouseDto>(), default))
             .ReturnsAsync(new ValidationResult());
