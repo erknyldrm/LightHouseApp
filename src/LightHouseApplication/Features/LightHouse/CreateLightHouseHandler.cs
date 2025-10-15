@@ -2,28 +2,27 @@ using FluentValidation;
 using LightHouseApplication.Common;
 using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Contracts;
+using LightHouseApplication.Contracts.Repositories;
 using LightHouseApplication.Dtos;
 using LightHouseApplication.Features.Models;
-using LightHouseDomain.Countries;
-using LightHouseDomain.Interfaces;
 using LightHouseDomain.ValueObjects;
 
-namespace LightHouseInfrastructure.Features.LightHouse;
+namespace LightHouseApplication.Features.LightHouse;
 
 internal class CreateLightHouseHandler(ILightHouseRepository lightHouseRepository, ICountryDataReader countryDataReader, IValidator<LightHouseDto> validator)
-    : IHandler<CreateLightHouseRequest, Result<Guid>>   
+    : IHandler<CreateLightHouseRequest, Result<Guid>>
 {
     private readonly ILightHouseRepository _lightHouseRepository = lightHouseRepository;
     private readonly ICountryDataReader _countryDataReader = countryDataReader;
 
     private readonly IValidator<LightHouseDto> _validator = validator;
 
-   public async Task<Result<Guid>> HandleAsync(CreateLightHouseRequest request, CancellationToken cancellationToken = default)
+    public async Task<Result<Guid>> HandleAsync(CreateLightHouseRequest request, CancellationToken cancellationToken = default)
     {
-       try
+        try
         {
             var validationResult = await _validator.ValidateAsync(request.LightHouse);
-            
+
             if (!validationResult.IsValid)
             {
                 var errorMessages = string.Join("; ", validationResult.Errors.Select(e => e.ErrorMessage));
@@ -32,18 +31,26 @@ internal class CreateLightHouseHandler(ILightHouseRepository lightHouseRepositor
             }
 
 
-            var country = await  _countryDataReader.GetCountryByIdAsync(request.LightHouse.CountryId);
-            if (country is null)
-                return Result<Guid>.Fail("Country not found.");
+            var result = await _countryDataReader.GetCountryByIdAsync(request.LightHouse.CountryId);
+
+            if (!result.IsSuccess)
+            {
+                return Result<Guid>.Fail(result.ErrorMessage);
+            }
 
             var location = new Coordinates(request.LightHouse.Latitude, request.LightHouse.Longitude);
 
             var lightHouse = new LightHouseDomain.Entities.LightHouse(
                 request.LightHouse.Name,
-                country,
+                result.Data,
                 location);
 
-            await _lightHouseRepository.AddAsync(lightHouse);
+            var added = await _lightHouseRepository.AddAsync(lightHouse);
+            
+            if (!added.IsSuccess)
+            {
+                return Result<Guid>.Fail(added.ErrorMessage);
+            }
 
             return Result<Guid>.Ok(lightHouse.Id);
         }

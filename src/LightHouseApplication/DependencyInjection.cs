@@ -9,7 +9,6 @@ using LightHouseApplication.Features.LightHouse;
 using LightHouseApplication.Features.Models;
 using LightHouseApplication.Services;
 using LightHouseApplication.Validators;
-using LightHouseInfrastructure.Features.LightHouse;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LightHouseApplication;

@@ -1,4 +1,5 @@
 using System;
+using LightHouseApplication.Common;
 using LightHouseApplication.Contracts;
 using LightHouseDomain.Countries;
 using LightHouseInfrastructure.Caching;
@@ -24,28 +25,37 @@ public class CachedCountryDataReader(ICountryDataReader innerReader, ICacheServi
         if (cached is not null)
             return cached;
 
-        var countries = await  _innerReader.GetAllCountriesAsync();
+        var countries = await _innerReader.GetAllCountriesAsync();
         await _cacheService.SetAsync(cacheKey, countries, TimeSpan.FromHours(1));
 
         return countries;
 
     }
 
-    public async Task<Country> GetCountryByIdAsync(int id)
+    public async Task<Result<Country>> GetCountryByIdAsync(int id)
     {
-        var cacheKey = $"country_{id}";
+        try
+        {
+            var cacheKey = $"country_{id}";
 
-        var cached = await _cacheService.GetAsync<Country>(cacheKey);
+            var cached = await _cacheService.GetAsync<Country>(cacheKey);
 
-        if (cached is not null)
-            return cached;
+            if (cached is not null)
+            {
+                return Result<Country>.Ok(cached);
+            }
 
-        var country = await _innerReader.GetCountryByIdAsync(id);
+            var country = await _innerReader.GetCountryByIdAsync(id);
 
-        if (country is not null)
-            await _cacheService.SetAsync(cacheKey, country, TimeSpan.FromHours(1));
-            
-        return country;
+            if (country is not null)
+                await _cacheService.SetAsync(cacheKey, country, TimeSpan.FromHours(1));
+
+            return country;
+        }
+        catch (System.Exception ex)
+        {
+            return Result<Country>.Fail($"An error occurred: {ex.Message}");
+        }
     }
 
     public async Task<Country> GetCountryByNameAsync(string name)

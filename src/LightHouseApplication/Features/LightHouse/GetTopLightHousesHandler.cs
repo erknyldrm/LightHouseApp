@@ -1,5 +1,6 @@
 using LightHouseApplication.Common;
 using LightHouseApplication.Common.Pipeline;
+using LightHouseApplication.Contracts.Repositories;
 using LightHouseApplication.Dtos;
 using LightHouseDomain.Interfaces;
 

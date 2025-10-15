@@ -1,5 +1,6 @@
 using System;
 using LightHouseApplication.Common;
+using LightHouseApplication.Contracts.Repositories;
 using LightHouseApplication.Dtos;
 using LightHouseDomain.Interfaces;
 

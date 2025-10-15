@@ -1,7 +1,8 @@
 using Dapper;
+using LightHouseApplication.Common;
+using LightHouseApplication.Contracts.Repositories;
 using LightHouseDomain.Countries;
 using LightHouseDomain.Entities;
-using LightHouseDomain.Interfaces;
 using LightHouseDomain.ValueObjects;
 
 namespace LightHouseData;
@@ -11,23 +12,32 @@ public partial class LightHouseRepository(IDbConnectionFactory connectionFactory
 
     private readonly IDbConnectionFactory _connectionFactory = connectionFactory;
 
-    public async Task AddAsync(LightHouse entity)
+    public async Task<Result> AddAsync(LightHouse entity)
     {
-        var query = string.Format(
-            @"INSERT INTO Lighthouses (id, name, countryId, latitude, longitude) 
-              VALUES (@Name, @CountryId, @Longitude, @Latitude);"
-        );
-
-        using var connection = _connectionFactory.CreateConnection();
-
-        await connection.ExecuteAsync(query, new
+        try
         {
-            entity.Id,
-            entity.Name,
-            entity.CountryId,
-            Longitude = entity.Location.Longitude,
-            Latitude = entity.Location.Latitude
-        });
+            var query = string.Format(
+            @"INSERT INTO Lighthouses (id, name, countryId, latitude, longitude) 
+              VALUES (@Name, @CountryId, @Longitude, @Latitude);");
+
+            using var connection = _connectionFactory.CreateConnection();
+
+            var added = await connection.ExecuteAsync(query, new
+            {
+                entity.Id,
+                entity.Name,
+                entity.CountryId,
+                Longitude = entity.Location.Longitude,
+                Latitude = entity.Location.Latitude
+            });
+
+            return added > 0 ? Result.Ok() : Result.Fail(@"Failed to add lighthouse.");
+        }
+        catch (System.Exception ex)
+        {
+            return Result.Fail($"An error occurred: {ex.Message}");
+        }
+
     }
 
     public Task DeleteAsync(int id)

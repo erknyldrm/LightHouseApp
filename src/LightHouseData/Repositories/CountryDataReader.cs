@@ -1,6 +1,7 @@
 using LightHouseApplication.Contracts;
 using LightHouseDomain.Countries;
 using Dapper;
+using LightHouseApplication.Common;
 
 namespace LightHouseData.Repositories;
 
@@ -21,11 +22,20 @@ public class CountryDataReader(IDbConnectionFactory dbConnectionFactory) : ICoun
         return rows.ToList().AsReadOnly();
     }
 
-    public async Task<Country> GetCountryByIdAsync(int id)
+    public async Task<Result<Country>> GetCountryByIdAsync(int id)
     {
-        const string sql = "SELECT id, name FROM country WHERE id = @Id";
-        using var connection = dbConnectionFactory.CreateConnection();
-        return await connection.QuerySingleOrDefaultAsync<Country>(sql, new { Id = id });
+        try
+        {
+            const string sql = "SELECT id, name FROM country WHERE id = @Id";
+            using var connection = dbConnectionFactory.CreateConnection();
+            var result = await connection.QuerySingleOrDefaultAsync<Country>(sql, new { Id = id });
+
+            return result is not null ? Result<Country>.Ok(result) : Result<Country>.Fail("Country not found.");    
+        }
+        catch (System.Exception ex)
+        {
+            return Result<Country>.Fail($"An error occurred: {ex.Message}");
+        }
     }
 
     public async Task<Country> GetCountryByNameAsync(string name)
