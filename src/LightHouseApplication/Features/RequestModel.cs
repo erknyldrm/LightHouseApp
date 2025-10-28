@@ -15,7 +15,7 @@ namespace LightHouseApplication.Features.Models
 
 namespace LightHouseApplication.Features.Photo.Models
 {
-    internal record UploadPhotoRequest(PhotoDto Photo, Stream content);
+    public record UploadPhotoRequest(PhotoDto Photo, Stream content);
     internal record DeletePhotoRequest(Guid Id);
 }
 
