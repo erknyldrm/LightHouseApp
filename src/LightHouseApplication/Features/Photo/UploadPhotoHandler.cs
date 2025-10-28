@@ -1,5 +1,6 @@
 using LightHouseApplication.Common;
 using LightHouseApplication.Dtos;
+using LightHouseApplication.Features.Photo.Models;
 using LightHouseDomain.Interfaces;
 using LightHouseDomain.ValueObjects;
 
@@ -11,18 +12,18 @@ internal class UploadPhotoHandler(IPhotoStorageService photoStorageService, IPho
 
     private readonly IPhotoRepository _photoRepository = photoRepository;
 
-    public async Task<Result<Guid>> HandleAsync(PhotoDto photoDto, Stream content)
+    public async Task<Result<Guid>> HandleAsync(UploadPhotoRequest request, Stream content)
     {
         try
         {
-            if(content == null || content.Length == 0)
+            if (content == null || content.Length == 0)
                 return Result<Guid>.Fail("Photo content cannot be empty.");
 
-            var savedPath = await _photoStorageService.SavePhotoAsync(content, photoDto.FileName);
+            var savedPath = await _photoStorageService.SavePhotoAsync(content, request.Photo.FileName);
 
-            var metadata = new PhotoMetadata("N/A", "Unknown", photoDto.CameraModel, photoDto.UploadedAt);
+            var metadata = new PhotoMetadata("N/A", "Unknown", request.Photo.CameraModel, request.Photo.UploadedAt);
 
-            var photo = new LightHouseDomain.Entities.Photo(photoDto.UserId, photoDto.LightHouseId, savedPath, metadata);
+            var photo = new LightHouseDomain.Entities.Photo(request.Photo.UserId, request.Photo.LightHouseId, savedPath, metadata);
 
             await _photoRepository.AddAsync(photo);
 

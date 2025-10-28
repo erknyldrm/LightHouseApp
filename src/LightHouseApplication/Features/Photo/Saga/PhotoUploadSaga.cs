@@ -13,7 +13,7 @@ public class PhotoUploadSaga(ILogger<PhotoUploadSaga> logger) : ISagaProvider<Up
     private readonly MetadataSaveStep _metadataSaveStep;
 
 
-    async Task<Result<PhotoDto>> ISagaProvider<UploadPhotoRequest, Result<PhotoDto>>.ExecuteAsync(UploadPhotoRequest request, CancellationToken cancellationToken)
+    public async Task<Result<PhotoDto>> ExecuteAsync(UploadPhotoRequest request, CancellationToken cancellationToken)
     {
         var sagaId = Guid.NewGuid();
 

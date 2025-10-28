@@ -1,4 +1,3 @@
-using System;
 using FluentValidation;
 using LightHouseApplication.Common;
 using LightHouseApplication.Common.Pipeline;
@@ -7,6 +6,8 @@ using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
 using LightHouseApplication.Features.LightHouse;
 using LightHouseApplication.Features.Models;
+using LightHouseApplication.Features.Photo.Saga;
+using LightHouseApplication.Features.Photo.Saga.Steps;
 using LightHouseApplication.Services;
 using LightHouseApplication.Validators;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,10 @@ public static class DependencyInjection
 
         services.AddScoped<ILightHouseService, LightHouseService>();
         services.AddScoped<IPhotoService, PhotoService>();
+        services.AddScoped<IPhotoUploadService, PhotoUploadService>();
+        services.AddScoped<PhotoUploadSaga>();
+        services.AddScoped<FileUploadStep>();
+        services.AddScoped<MetadataSaveStep>();
 
         services.AddScoped<PipelineDispatcher>();
 

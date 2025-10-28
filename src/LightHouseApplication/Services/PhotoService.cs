@@ -25,14 +25,4 @@ public class PhotoService(PipelineDispatcher pipelineDispatcher) : IPhotoService
         throw new NotImplementedException();
     }
 
-    public async Task<Guid> UploadPhotoAsync(PhotoDto photo, Stream fileContent)
-    {
-        var request = new UploadPhotoRequest(photo, fileContent);
-
-        var result = await pipelineDispatcher.SendAsync<UploadPhotoRequest, Result<Guid>>(request);
-
-        return result.IsSuccess 
-             ? result.Data 
-             : throw new Exception(result.ErrorMessage); 
-    }
 }

@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LightHouseWebApi.Controllers;
 
-public record UploadPhotoRequest(string fileName, string cameraType, Guid userId, Guid lightHouseId, string resolution, string lens);
+public record UploadPhotoRequest(string FileName, string CameraType, Guid UserId, Guid LightHouseId, string Resolution, string Lens);
 
 [ApiController]
 [Route("api/[controller]")]
-public class PhotoController(ILogger<PhotoController> logger, IPhotoService photoService) : ControllerBase
+public class PhotoController(ILogger<PhotoController> logger, IPhotoUploadService photoUploadService) : ControllerBase
 {
     [HttpPost("upload")]
     public async Task<IActionResult> UploadPhotoAsync([FromForm] UploadPhotoRequest request, IFormFile file)
@@ -17,10 +17,10 @@ public class PhotoController(ILogger<PhotoController> logger, IPhotoService phot
         var photoDto = new PhotoDto
         (
             Guid.NewGuid(),
-            request.fileName,
+            request.FileName,
             DateTime.UtcNow,
-            request.cameraType,
-            request.userId, request.lightHouseId
+            request.CameraType,
+            request.UserId, request.LightHouseId
         );
 
         if (file == null || file.Length == 0)
@@ -42,7 +42,7 @@ public class PhotoController(ILogger<PhotoController> logger, IPhotoService phot
 
         try
         {
-            await photoService.UploadPhotoAsync(photoDto, stream);
+            await photoUploadService.UploadPhotoAsync(photoDto, stream);
             
             return Ok("Photo uploaded successfully.");
         }
