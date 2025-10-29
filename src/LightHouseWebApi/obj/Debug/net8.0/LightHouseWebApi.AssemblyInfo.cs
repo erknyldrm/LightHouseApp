@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LightHouseWebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d3898d1f1ed3ee9e61f2b6be5ba063837f1c2526")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c466cfd841badb892bfeb9de3e64a6b0a774e40")]
 [assembly: System.Reflection.AssemblyProductAttribute("LightHouseWebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LightHouseWebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

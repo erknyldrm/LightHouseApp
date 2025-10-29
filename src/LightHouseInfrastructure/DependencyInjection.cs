@@ -2,11 +2,13 @@ using System;
 using Elastic.Serilog.Sinks;
 using Keycloak.AuthServices.Authentication;
 using Keycloak.AuthServices.Authorization;
+using LightHouseDomain.Common;
 using LightHouseDomain.Interfaces;
 using LightHouseInfrastructure.Auditors;
 using LightHouseInfrastructure.Caching;
 using LightHouseInfrastructure.Configuration;
 using LightHouseInfrastructure.Identity;
+using LightHouseInfrastructure.Messaging;
 using LightHouseInfrastructure.SecretManager;
 using LightHouseInfrastructure.Services;
 using LightHouseInfrastructure.Storage;
@@ -29,7 +31,7 @@ public static class DependencyInjection
 
 public class InfrastructureBuilder(IServiceCollection services, IConfiguration configuration)
 {
-   
+
     public InfrastructureBuilder WithSecretVault()
     {
         services.AddSingleton<ISecretManager, VaultSecretManager>();
@@ -124,7 +126,7 @@ public class InfrastructureBuilder(IServiceCollection services, IConfiguration c
         return this;
     }
 
- public InfrastructureBuilder ElasticSearchLogging(IHostEnvironment environment)
+    public InfrastructureBuilder ElasticSearchLogging(IHostEnvironment environment)
     {
         var elasticSearchSettings = new ElasticSearchSettings();
         configuration.GetSection("ElasticSearchSetttings").Bind(elasticSearchSettings);
@@ -141,20 +143,29 @@ public class InfrastructureBuilder(IServiceCollection services, IConfiguration c
                 options.DataStream = new("lighthouse-logs");
             });
 
-            if (environment.IsProduction())
-            {
-                loggerConfiguration = loggerConfiguration.MinimumLevel.Information();
-            }
-            else
-            {
-                loggerConfiguration = loggerConfiguration.MinimumLevel.Debug();
-            }
+        if (environment.IsProduction())
+        {
+            loggerConfiguration = loggerConfiguration.MinimumLevel.Information();
+        }
+        else
+        {
+            loggerConfiguration = loggerConfiguration.MinimumLevel.Debug();
+        }
 
-            Log.Logger = loggerConfiguration.CreateLogger();
+        Log.Logger = loggerConfiguration.CreateLogger();
 
         return this;
     }
-   
-    
+
+    public InfrastructureBuilder WithMessaging()
+    {
+        services.Configure<RabbitMqSettings>(configuration.GetSection("RabbitMqSettings"));
+
+        services.AddSingleton<IEventPublisher, RabbitMqEventPublisher>();   
+        
+        return this;
+    }   
+
+
     public IServiceCollection Build() => services;
 }
