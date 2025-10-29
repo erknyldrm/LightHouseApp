@@ -27,6 +27,7 @@ builder.Services.AddInfrastructureServices(builder.Configuration)
 .WithExternals()
 .WithKeycloakAuthentication()
 .ElasticSearchLogging(builder.Environment)
+.WithMessaging()
 .Build();
 
 builder.Host.UseSerilog();
