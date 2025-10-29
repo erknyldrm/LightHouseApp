@@ -115,10 +115,34 @@ services:
     volumes:
       - elasticsearch_data:/usr/share/elasticsearch/data
 
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: plh-rabbitmq
+    restart: unless-stopped
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+      - "1883:1883"
+    environment:
+      RABBITMQ_HOST: '%'
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin1234
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test:
+        - CMD
+        - rabbitmq-diagnostics
+        - '-q'
+        - ping
+      retries: 3
+      timeout: 5s
+
 volumes:
   pgdata:
   minio_data:
   elasticsearch_data:
+  rabbitmq_data:
 
 networks:
   lighthouse-network:

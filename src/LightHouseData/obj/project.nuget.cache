@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ogIctYhKcrhSacldyk/wFvZ/X/OdAQJOpc/AKahkXYEBijnrEVe1Iz/ic5DCmxeevo6AVouJQlnPfXMlP1E6wA==",
+  "dgSpecHash": "hndZCFsqbDJHj2q1KtEHMgkwCCL7HE5hD928ZbPLDzrmm9eMfFzJwyD4Jou/WL7klmpdHUBytn8UC1cJ1f3dkQ==",
   "success": true,
   "projectFilePath": "/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseData/LightHouseData.csproj",
   "expectedPackageFiles": [
@@ -52,6 +52,7 @@
     "/Users/erkanyildirim/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/npgsql/9.0.3/npgsql.9.0.3.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/pipelines.sockets.unofficial/2.2.8/pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/rabbitmq.client/7.1.2/rabbitmq.client.7.1.2.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/serilog/4.3.0/serilog.4.3.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/serilog.extensions.hosting/9.0.0/serilog.extensions.hosting.9.0.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/serilog.extensions.logging/9.0.2/serilog.extensions.logging.9.0.2.nupkg.sha512",
@@ -65,6 +66,7 @@
     "/Users/erkanyildirim/.nuget/packages/system.text.encodings.web/9.0.8/system.text.encodings.web.9.0.8.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/system.text.json/9.0.8/system.text.json.9.0.8.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/system.threading.channels/8.0.0/system.threading.channels.8.0.0.nupkg.sha512",
+    "/Users/erkanyildirim/.nuget/packages/system.threading.ratelimiting/8.0.0/system.threading.ratelimiting.8.0.0.nupkg.sha512",
     "/Users/erkanyildirim/.nuget/packages/vaultsharp/1.7.0/vaultsharp.1.7.0.nupkg.sha512"
   ],
   "logs": []

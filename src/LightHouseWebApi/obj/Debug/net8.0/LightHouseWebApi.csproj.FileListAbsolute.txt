@@ -172,3 +172,4 @@
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Serilog.Extensions.Hosting.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Serilog.Extensions.Logging.dll
 /Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/Serilog.Sinks.Console.dll
+/Users/erkanyildirim/Documents/Applications/LightHouseApp/src/LightHouseWebApi/bin/Debug/net8.0/RabbitMQ.Client.dll
