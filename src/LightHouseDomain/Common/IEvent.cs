@@ -1,5 +1,3 @@
-using System;
-
 namespace LightHouseDomain.Common;
 
 public interface IEvent
