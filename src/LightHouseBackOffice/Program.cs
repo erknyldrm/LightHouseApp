@@ -1,7 +1,20 @@
+using LightHouseBackOffice.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddHttpClient("LightHouseServiceClient", client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["LightHouseService:BaseUrl"] ??
+                                throw new InvalidOperationException("LightHouseService:BaseUrl configuration is missing."));
+
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
+});
+
+
+builder.Services.AddScoped<ILightHouseServiceClient, LightHouseServiceClient>();
 
 var app = builder.Build();
 
