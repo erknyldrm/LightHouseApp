@@ -40,7 +40,7 @@ public class LightHouseController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize(Policy = "ApiScope")]
+ //   [Authorize(Policy = "ApiScope")]
     public async Task<IActionResult> CreateAsync([FromBody] CreateLightHouseRequest request)
     {
         try
