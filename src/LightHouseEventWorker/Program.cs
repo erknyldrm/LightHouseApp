@@ -1,4 +1,5 @@
 using LightHouseEventWorker;
+using LightHouseEventWorker.Services;
 using LightHouseInfrastructure;
 
 var builder = Host.CreateApplicationBuilder(args);
@@ -8,7 +9,7 @@ builder.Services.AddInfrastructureServices(builder.Configuration)
 .WithMessaging()
 .Build();
 
-//builder.Services.AddHostedService<Worker>();
+builder.Services.AddHostedService<RabbitMqEventConsumerService>();
 
 var host = builder.Build();
 await host.RunAsync();
