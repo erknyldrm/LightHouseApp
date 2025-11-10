@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LightHouseEventWorker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f65f8a51a20678ccc63c8a37133997bfc6ef596")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88cdf289adb706d1528e908790c22db4c629485a")]
 [assembly: System.Reflection.AssemblyProductAttribute("LightHouseEventWorker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LightHouseEventWorker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

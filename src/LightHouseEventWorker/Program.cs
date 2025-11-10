@@ -1,4 +1,5 @@
 using LightHouseEventWorker;
+using LightHouseEventWorker.EventHandlers;
 using LightHouseEventWorker.Services;
 using LightHouseInfrastructure;
 
@@ -8,6 +9,8 @@ builder.Services.AddInfrastructureServices(builder.Configuration)
 .WithSecretVault()
 .WithMessaging()
 .Build();
+
+builder.Services.AddScoped<IPhotoUploadedEventHandler, PhotoUploadedEventHandler>();    
 
 builder.Services.AddHostedService<RabbitMqEventConsumerService>();
 
