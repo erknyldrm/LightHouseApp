@@ -16,7 +16,7 @@ public class RabbitMqEventConsumerService : BackgroundService
         public string EventType { get; set; } = string.Empty;
         public DateTime OccurredAt { get; set; }
         public Guid AggregateId { get; set; }
-        public Object Payload { get; set; } = new();
+        public JsonElement Data { get; set; }
     }
 
     private readonly ILogger<RabbitMqEventConsumerService> _logger;
@@ -25,6 +25,7 @@ public class RabbitMqEventConsumerService : BackgroundService
     private IConnection? _connection;
     private IChannel? _channel;
 
+    private readonly JsonSerializerOptions _jsonSerializerOptions;
     public RabbitMqEventConsumerService(
         ILogger<RabbitMqEventConsumerService> logger,
         IOptions<RabbitMqSettings> rabbitMqSettings,
@@ -33,6 +34,11 @@ public class RabbitMqEventConsumerService : BackgroundService
         _logger = logger;
         _rabbitMqSettings = rabbitMqSettings.Value;
         _serviceProvider = serviceProvider;
+        _jsonSerializerOptions = new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            PropertyNameCaseInsensitive = true
+        };
     }
 
     private async Task InitializeRabbitMqAsync(CancellationToken cancellationToken)
@@ -92,20 +98,33 @@ public class RabbitMqEventConsumerService : BackgroundService
 
     private async Task HandlePhotoUploadedEventAsync(EventMessage eventMessage, CancellationToken cancellationToken)
     {
-        var photoUploadedEvent = JsonSerializer.Deserialize<PhotoUploaded>(eventMessage.Payload.ToString()!); 
-
-        if (photoUploadedEvent == null)
+        try
         {
-            _logger.LogWarning("Failed to deserialize PhotoUploadedEvent from payload - EventId: {EventId}", eventMessage.EventId);
-            return;
+            var dataElement = eventMessage.Data;
+            var fileName = dataElement.GetProperty("fileName").GetString() ?? string.Empty;
+            var photoId = dataElement.GetProperty("photoId").GetGuid();
+            var lightHouseId = dataElement.GetProperty("lightHouseId").GetGuid();
+            var userId = dataElement.GetProperty("userId").GetGuid();
+            var cameraType = dataElement.GetProperty("cameraType").GetString() ?? string.Empty;
+            var resolution = dataElement.GetProperty("resolution").GetString() ?? string.Empty;
+            var lens = dataElement.GetProperty("lens").GetString() ?? string.Empty;
+            var uploadedAt = dataElement.GetProperty("uploadedAt").GetDateTime();
+
+            var photoUploadedEvent = new PhotoUploaded(
+                photoId, fileName, userId, lightHouseId, cameraType, resolution, lens, uploadedAt
+            );
+
+            using var scope = _serviceProvider.CreateScope();
+            var handler = scope.ServiceProvider.GetRequiredService<IPhotoUploadedEventHandler>();
+
+            await handler.HandleAsync(photoUploadedEvent, cancellationToken);
+
+            _logger.LogInformation("Processed PhotoUploadedEvent - EventId: {EventId}", eventMessage.EventId);
         }
-
-        using var scope = _serviceProvider.CreateScope();
-        var handler = scope.ServiceProvider.GetRequiredService<IPhotoUploadedEventHandler>(); 
-
-        await handler.HandleAsync(photoUploadedEvent, cancellationToken);
-
-        _logger.LogInformation("Processed PhotoUploadedEvent - EventId: {EventId}", eventMessage.EventId);
+        catch (System.Exception ex)
+        {
+            _logger.LogError(ex, "Error handling PhotoUploadedEvent - EventId: {EventId}", eventMessage.EventId);
+        }
     }
 
     private async Task ProcessEventAsync(string message, string routingKey, CancellationToken cancellationToken)
@@ -201,7 +220,7 @@ public class RabbitMqEventConsumerService : BackgroundService
         }
 
         await base.StopAsync(cancellationToken);
-        
-        _logger.LogInformation("RabbitMqEventConsumerService has stopped.");    
+
+        _logger.LogInformation("RabbitMqEventConsumerService has stopped.");
     }
 }

@@ -6,6 +6,7 @@ using LightHouseInfrastructure;
 var builder = Host.CreateApplicationBuilder(args);
 
 builder.Services.AddInfrastructureServices(builder.Configuration)
+.WithCaching()
 .WithSecretVault()
 .WithMessaging()
 .Build();
