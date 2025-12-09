@@ -4,6 +4,7 @@ using LightHouseApplication.Contracts.Repositories;
 using LightHouseData.Repositories;
 using LightHouseDomain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace LightHouseData;
 
@@ -54,7 +55,8 @@ public static class DependencyInjection
         {
             var repo = sp.GetRequiredService<CountryDataReader>();
             var cache = sp.GetService<LightHouseInfrastructure.Caching.ICacheService>();
-            return cache is null ? repo : new CachedCountryDataReader(repo, cache);
+            var logger = sp.GetRequiredService<ILogger<CachedCountryDataReader>>();
+            return cache is null ? repo : new CachedCountryDataReader(repo, cache, logger);
         });
     }
 }

@@ -11,44 +11,26 @@ internal class LightHouseService(PipelineDispatcher pipelineDispatcher) : ILight
 {
     private readonly PipelineDispatcher _pipelineDispatcher = pipelineDispatcher;
 
-    public async Task<Guid> CreateLightHouseAsync(LightHouseDto lightHouseDto)
+    public async Task<Result<Guid>> CreateLightHouseAsync(LightHouseDto lightHouseDto)
     {
-        var result = await _pipelineDispatcher.SendAsync<CreateLightHouseRequest, Result<Guid>>(new CreateLightHouseRequest(lightHouseDto));
-        if (!result.IsSuccess)
-        {
-            throw new Exception(result.ErrorMessage);
-        }
-        return result.Data;
+        return await _pipelineDispatcher.SendAsync<CreateLightHouseRequest, Result<Guid>>(new CreateLightHouseRequest(lightHouseDto));
     }
 
-    public async Task<Guid> DeleteLightHouseAsync(Guid id)
+    public async Task<Result<Guid>> DeleteLightHouseAsync(Guid id)
     {
-        var result = await _pipelineDispatcher.SendAsync<DeleteLightHouseRequest, Result<Guid>>(new DeleteLightHouseRequest(id));
-
-        if (!result.IsSuccess)
-        {
-            return Guid.Empty; // todo: add not found vs error distinction
-        }
-
-        return result.Data;
+        return await _pipelineDispatcher.SendAsync<DeleteLightHouseRequest, Result<Guid>>(new DeleteLightHouseRequest(id));
     }
 
-    public async Task<LightHouseDto?> GetLightHouseByIdAsync(Guid id)
+    public async Task<Result<LightHouseDto?>> GetLightHouseByIdAsync(Guid id)
     {
-        var result = await _pipelineDispatcher.SendAsync<GetLightHouseByIdRequest, Result<LightHouseDto?>>(new GetLightHouseByIdRequest(id));
-        if (!result.IsSuccess)
-        {
-            return null; // todo: add not found vs error distinction
-        }
+        return await _pipelineDispatcher.SendAsync<GetLightHouseByIdRequest, Result<LightHouseDto?>>(new GetLightHouseByIdRequest(id));
 
-        return result.Data;
     }
 
-    public async Task<IEnumerable<LightHouseDto>> GetLightHousesAsync()
+    public async Task<Result<IEnumerable<LightHouseDto>>> GetLightHousesAsync()
     {
-        var result = await _pipelineDispatcher.SendAsync<GetAllLightHousesRequest, Result<IEnumerable<LightHouseDto>>>(new GetAllLightHousesRequest());
+        return await _pipelineDispatcher.SendAsync<GetAllLightHousesRequest, Result<IEnumerable<LightHouseDto>>>(new GetAllLightHousesRequest());
 
-        return result.IsSuccess ? result.Data : throw new Exception(result.ErrorMessage);   
     }
 
     public async Task<Result<IEnumerable<LightHouseTopDto>>> GetTopAsync(TopDto topDto)
@@ -57,6 +39,11 @@ internal class LightHouseService(PipelineDispatcher pipelineDispatcher) : ILight
     }
 
     public Task<LightHouseDto> UpdateLightHouseAsync(Guid id, LightHouseDto lightHouseDto)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<Result<LightHouseDto>> ILightHouseService.UpdateLightHouseAsync(Guid id, LightHouseDto lightHouseDto)
     {
         throw new NotImplementedException();
     }
