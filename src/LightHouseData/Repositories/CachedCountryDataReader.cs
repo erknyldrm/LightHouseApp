@@ -1,70 +1,84 @@
 using System;
 using LightHouseApplication.Common;
 using LightHouseApplication.Contracts;
+using LightHouseApplication.Dtos;
 using LightHouseDomain.Countries;
 using LightHouseInfrastructure.Caching;
+using Microsoft.Extensions.Logging;
 
 namespace LightHouseData.Repositories;
 
-public class CachedCountryDataReader(ICountryDataReader innerReader, ICacheService cacheService) : ICountryDataReader
+public class CachedCountryDataReader(ICountryDataReader innerReader, ICacheService cacheService, ILogger<CachedCountryDataReader> logger) : ICountryDataReader
 {
-    private readonly ICountryDataReader _innerReader = innerReader;
-    private readonly ICacheService _cacheService = cacheService;
 
-    public async Task AddCountryAsync(int id, string name)
-    {
-        await _innerReader.AddCountryAsync(id, name);
-    }
-
-    public async Task<IReadOnlyList<Country>> GetAllCountriesAsync()
-    {
-        const string cacheKey = "all_countries";
-
-        var cached = await _cacheService.GetAsync<IReadOnlyList<Country>>(cacheKey);
-
-        if (cached is not null)
-            return cached;
-
-        var countries = await _innerReader.GetAllCountriesAsync();
-        await _cacheService.SetAsync(cacheKey, countries, TimeSpan.FromHours(1));
-
-        return countries;
-
-    }
-
-    public async Task<Result<Country>> GetCountryByIdAsync(int id)
+    private static readonly TimeSpan CacheDuration = TimeSpan.FromDays(1);
+    public async Task<Result<IReadOnlyList<Country>>> GetAllCountriesAsync(CancellationToken cancellationToken = default)
     {
         try
         {
-            var cacheKey = $"country_{id}";
+            const string cacheKey = "countries:all";
 
-            var cached = await _cacheService.GetAsync<Country>(cacheKey);
+            var cachedResult = await cacheService.GetAsync<IReadOnlyList<CountryDto>>(cacheKey);
 
-            if (cached is not null)
+            if (cachedResult.IsSuccess && cachedResult.Data is not null)
             {
-                return Result<Country>.Ok(cached);
+                var converted = cachedResult.Data.Select(c => Country.Create(c.Id, c.Name)).ToList();
+                return Result<IReadOnlyList<Country>>.Ok(converted);
             }
 
-            var country = await _innerReader.GetCountryByIdAsync(id);
+            var result = await innerReader.GetAllCountriesAsync(cancellationToken);
 
-            if (country is not null)
-                await _cacheService.SetAsync(cacheKey, country, TimeSpan.FromHours(1));
+            if (!result.IsSuccess)
+            {
+                return result;
+            }
 
-            return country;
+            var convertedResult = result.Data!.Select(c => new CountryDto { Id = c.Id, Name = c.Name }).ToList();
+            await cacheService.SetAsync(cacheKey, convertedResult, CacheDuration);
+            return result;
+
         }
         catch (System.Exception ex)
         {
-            return Result<Country>.Fail($"An error occurred: {ex.Message}");
+            logger.LogError(ex, "Error occurred while getting all countries with caching.");
+            return Result<IReadOnlyList<Country>>.Fail($"Failed to get all countries from cache: {ex.Message}");
+        }
+
+        throw new NotImplementedException();
+    }
+
+    public async Task<Result<Country>> GetCountryByIdAsync(int id, CancellationToken cancellationToken = default)
+    {
+         try
+        {
+            var cacheKey = $"country:{id}";
+            var cachedResult = await cacheService.GetAsync<CountryDto>(cacheKey);
+            if (cachedResult.IsSuccess && cachedResult.Data != null)
+            {
+                var country = Country.Create(cachedResult.Data.Id, cachedResult.Data.Name);
+                return Result<Country>.Ok(country);
+            }
+
+            var result = await innerReader.GetCountryByIdAsync(id);
+            if (!result.IsSuccess)
+            {
+                return result;
+            }
+
+            var countryData = result.Data!;
+            await cacheService.SetAsync(cacheKey, new CountryDto { Id = countryData.Id, Name = countryData.Name }, CacheDuration);
+            return result;
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Exception occurred while getting country by ID from cache. CountryId: {CountryId}", id);
+            return Result<Country>.Fail(ex.Message);
         }
     }
+}
 
-    public async Task<Country> GetCountryByNameAsync(string name)
-    {
-        return await _innerReader.GetCountryByNameAsync(name);
-    }
-
-    public async Task RemoveCountryAsync(int id)
-    {
-        await _innerReader.RemoveCountryAsync(id);
-    }
+internal class CountryDto
+{
+    public int Id { get; set; }
+    public required string Name { get; set; }
 }
