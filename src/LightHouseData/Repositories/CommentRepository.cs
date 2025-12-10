@@ -5,7 +5,7 @@ using LightHouseApplication.Contracts.Repositories;
 using LightHouseDomain.Entities;
 using Microsoft.Extensions.Logging;
 
-namespace LightHouseData;
+namespace LightHouseData.Repositories;
 
 public class CommentRepository(IDbConnectionFactory connFactory, ILogger<CommentRepository> logger)
     : ICommentRepository

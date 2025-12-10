@@ -6,7 +6,7 @@ using LightHouseDomain.Entities;
 using LightHouseDomain.ValueObjects;
 using Microsoft.Extensions.Logging;
 
-namespace LightHouseData;
+namespace LightHouseData.Repositories;
 
 public partial class LightHouseRepository(IDbConnectionFactory connectionFactory, ILogger<LightHouseRepository> logger) : ILightHouseRepository
 {

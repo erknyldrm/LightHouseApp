@@ -3,7 +3,7 @@ using LightHouseApplication.Common;
 using LightHouseApplication.Contracts.Repositories;
 using LightHouseDomain.Entities;
 
-namespace LightHouseData;
+namespace LightHouseData.Repositories;
 
 public class UserRepository : IUserRepository
 {

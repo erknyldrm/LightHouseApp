@@ -1,7 +1,7 @@
 using Dapper;
 using LightHouseDomain.ValueObjects;
 
-namespace LightHouseData;
+namespace LightHouseData.Repositories;
 
 public partial class LightHouseRepository
 {
