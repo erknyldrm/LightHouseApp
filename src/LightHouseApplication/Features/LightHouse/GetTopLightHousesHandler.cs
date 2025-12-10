@@ -2,7 +2,6 @@ using LightHouseApplication.Common;
 using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Contracts.Repositories;
 using LightHouseApplication.Dtos;
-using LightHouseDomain.Interfaces;
 
 namespace LightHouseApplication.Features.LightHouse;
 
@@ -12,8 +11,15 @@ internal class GetTopLightHousesHandler(ILightHouseRepository lightHouseReposito
 {
     public async Task<Result<IEnumerable<LightHouseTopDto>>> HandleAsync(GetTopLightHousesRequest request, CancellationToken cancellationToken)
     {
-        var stats = await lightHouseRepository.GetTopAsync(request.topCount);
+        var statsResult = await lightHouseRepository.GetTopAsync(request.topCount);
 
+        if (!statsResult.IsSuccess)
+        {
+            return Result<IEnumerable<LightHouseTopDto>>.Fail(statsResult.ErrorMessage!);
+        }
+
+        var stats = statsResult.Data!;
+        
         if (stats == null || !stats.Any())
         {
             return Result<IEnumerable<LightHouseTopDto>>.Fail("No lighthouses found");

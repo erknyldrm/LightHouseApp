@@ -1,5 +1,6 @@
 using System;
-using LightHouseDomain.Interfaces;
+using LightHouseApplication.Common;
+using LightHouseApplication.Contracts;
 using LightHouseInfrastructure.Configuration;
 using Microsoft.Extensions.Options;
 using Minio;
@@ -26,15 +27,21 @@ public class PhotoStorageService : IPhotoStorageService
             .Build();
     }
 
+    public Task<Result> DeleteAsync(string filePath, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
 
-    public async Task DeletePhotoAsync(string filePath, CancellationToken cancellationToken = default)
+    public async Task<Result> DeletePhotoAsync(string filePath, CancellationToken cancellationToken = default)
     {
         await _minioClient.RemoveObjectAsync(new RemoveObjectArgs()
             .WithBucket(_bucketName)
             .WithObject(filePath), cancellationToken);
+
+        return Result.Ok();
     }
 
-    public async Task<Stream> GetAsync(string filePath, CancellationToken cancellationToken = default)
+    public async Task<Result<Stream>> GetAsync(string filePath, CancellationToken cancellationToken = default)
     {
         var memoryStream = new MemoryStream();
         await _minioClient.GetObjectAsync(new GetObjectArgs()
@@ -46,7 +53,7 @@ public class PhotoStorageService : IPhotoStorageService
             }), cancellationToken);
 
         memoryStream.Position = 0;
-        return memoryStream;
+        return Result<Stream>.Ok(memoryStream);
     }
 
     public Task<string> GetFilePathAsync(Stream fileStream, CancellationToken cancellationToken = default)
@@ -54,7 +61,7 @@ public class PhotoStorageService : IPhotoStorageService
         throw new NotImplementedException();
     }
 
-    public async Task<string> SavePhotoAsync(Stream fileStream, string fileName, CancellationToken cancellationToken = default)
+    public async Task<Result<string>> SaveAsync(Stream fileStream, string fileName, CancellationToken cancellationToken = default)
     {
         bool found = _minioClient.BucketExistsAsync(new BucketExistsArgs().WithBucket(_bucketName)).Result;
 
@@ -71,6 +78,7 @@ public class PhotoStorageService : IPhotoStorageService
             .WithObjectSize(fileStream.Length)
             .WithContentType("image/jpeg"), cancellationToken);
 
-        return $"{_bucketName}/{fileName}";
+        return Result<string>.Ok($"{_bucketName}/{fileName}");
+
     }
 }

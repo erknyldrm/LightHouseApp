@@ -2,7 +2,6 @@ using System;
 using LightHouseApplication.Contracts;
 using LightHouseApplication.Contracts.Repositories;
 using LightHouseData.Repositories;
-using LightHouseDomain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 

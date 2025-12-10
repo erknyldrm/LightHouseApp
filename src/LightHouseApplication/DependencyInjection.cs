@@ -5,12 +5,13 @@ using LightHouseApplication.Common.Pipeline.Behavior;
 using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
 using LightHouseApplication.Features.LightHouse;
-using LightHouseApplication.Features.Models;
+using LightHouseApplication.Features;
 using LightHouseApplication.Features.Photo.Saga;
 using LightHouseApplication.Features.Photo.Saga.Steps;
 using LightHouseApplication.Services;
 using LightHouseApplication.Validators;
 using Microsoft.Extensions.DependencyInjection;
+using LightHouseApplication.Contracts.ExternalServices;
 
 namespace LightHouseApplication;
 

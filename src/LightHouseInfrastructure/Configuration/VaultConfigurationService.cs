@@ -1,10 +1,11 @@
-using System;
-using LightHouseDomain.Interfaces;
+
+using LightHouseApplication.Contracts;
 using LightHouseInfrastructure.Identity;
 using Microsoft.Extensions.Logging;
 
 namespace LightHouseInfrastructure.Configuration;
 
+//Todo: Review usage and remove if not needed   
 [Obsolete("This class is deprecated and will be removed in future versions. Please use CachedConfigurationService instead.")]
 public class VaultConfigurationService(ISecretManager secretManager, ILogger<VaultConfigurationService> logger)
 {
@@ -16,14 +17,19 @@ public class VaultConfigurationService(ISecretManager secretManager, ILogger<Vau
     {
         try
         {
-            var connectionString = await _secretManager.GetSecretAsync(SecretPath, "DbConnStr");
+            var result = await _secretManager.GetSecretAsync(SecretPath, "DbConnStr");
 
-            if (string.IsNullOrEmpty(connectionString))
+            if (!result.IsSuccess)
+            {
+                _logger.LogWarning("Failed to retrieve database connection string: {ErrorMessage}", result.ErrorMessage);
+                throw new InvalidOperationException("Database connection string is not found in Vault.");
+            }
+            if (string.IsNullOrEmpty(result.Data))
             {
                 _logger.LogWarning("Database connection string is null or empty.");
                 throw new InvalidOperationException("Database connection string is not found in Vault.");
             }
-            return connectionString;
+            return result.Data;
         }
         catch (Exception ex)
         {
@@ -36,15 +42,21 @@ public class VaultConfigurationService(ISecretManager secretManager, ILogger<Vau
     {
         try
         {
-            var accessKey = await _secretManager.GetSecretAsync(SecretPath, "MinIOAccessKey");
-            var secretKey = await _secretManager.GetSecretAsync(SecretPath, "MinIOSecretKey");
+            var accessKeyResult = await _secretManager.GetSecretAsync(SecretPath, "MinIOAccessKey");
+            var secretKeyResult = await _secretManager.GetSecretAsync(SecretPath, "MinIOSecretKey");
 
-            if (string.IsNullOrEmpty(accessKey) || string.IsNullOrEmpty(secretKey))
+            if (!accessKeyResult.IsSuccess || !secretKeyResult.IsSuccess)
+            {
+                _logger.LogWarning("Failed to retrieve MinIO credentials: {AccessKeyError}, {SecretKeyError}", accessKeyResult.ErrorMessage, secretKeyResult.ErrorMessage);
+                throw new InvalidOperationException("MinIO credentials are not found in Vault.");
+            }
+
+            if (string.IsNullOrEmpty(accessKeyResult.Data) || string.IsNullOrEmpty(secretKeyResult.Data))
             {
                 _logger.LogWarning("MinIO credentials are null or empty.");
                 throw new InvalidOperationException("MinIO credentials are not found in Vault.");
             }
-            return (accessKey, secretKey);
+            return (accessKeyResult.Data, secretKeyResult.Data);
         }
         catch (Exception ex)
         {
@@ -57,14 +69,20 @@ public class VaultConfigurationService(ISecretManager secretManager, ILogger<Vau
     {
         try
         {
-            var secrets = await _secretManager.GetSecretsAsync(SecretPath);
+            var secretsResult = await _secretManager.GetSecretsAsync(SecretPath);
 
-            if (secrets == null || secrets.Count == 0)
+            if (!secretsResult.IsSuccess)
+            {
+                _logger.LogWarning("Failed to retrieve secrets: {ErrorMessage}", secretsResult.ErrorMessage);
+                throw new InvalidOperationException("Failed to retrieve secrets from Vault.");
+            }
+
+            if (secretsResult.Data == null || secretsResult.Data.Count == 0)
             {
                 _logger.LogWarning("No secrets found at the specified path.");
                 throw new InvalidOperationException("No secrets found in Vault.");
             }
-            return secrets;
+            return secretsResult.Data;
         }
         catch (Exception ex)
         {
@@ -77,19 +95,33 @@ public class VaultConfigurationService(ISecretManager secretManager, ILogger<Vau
     {
         try
         {
+            var audience = await _secretManager.GetSecretAsync(SecretPath, "KeycloakAudience");
+            var authirty = await _secretManager.GetSecretAsync(SecretPath, "KeycloakAuthority");
+            var realm = await _secretManager.GetSecretAsync(SecretPath, "KeycloakRealm");
+            var clientId = await _secretManager.GetSecretAsync(SecretPath, "KeycloakClientId");
+            var clientSecret = await _secretManager.GetSecretAsync(SecretPath, "KeycloakClientSecret"); 
+
+            var clockSkew = await _secretManager.GetSecretAsync(SecretPath, "KeycloakClockSkew");
+            var requireHttpsMetadata = await _secretManager.GetSecretAsync(SecretPath, "KeycloakRequireHttpsMetadata");
+            var validateAudience = await _secretManager.GetSecretAsync(SecretPath, "KeycloakValidateAudience");
+            var validateIssuer = await _secretManager.GetSecretAsync(SecretPath, "KeycloakValidateIssuer");
+            var validateLifetime = await _secretManager.GetSecretAsync(SecretPath, "KeycloakValidateLifetime");
+            var validateTokenSignature = await _secretManager.GetSecretAsync(SecretPath, "KeycloakValidateTokenSignature");
+            
+
             var keycloakSettings = new KeycloakSettings
             {
-                Audience = await _secretManager.GetSecretAsync(SecretPath, "KeycloakAudience"),
-                Authority = await _secretManager.GetSecretAsync(SecretPath, "KeycloakAuthority"),
-                Realm = await _secretManager.GetSecretAsync(SecretPath, "KeycloakRealm"),
-                ClientId = await _secretManager.GetSecretAsync(SecretPath, "KeycloakClientId"),
-                ClientSecret = await _secretManager.GetSecretAsync(SecretPath, "KeycloakClientSecret"),
-                ClockSkew = await _secretManager.GetSecretAsync(SecretPath, "KeycloakClockSkew") is string clockSkewStr && int.TryParse(clockSkewStr, out var clockSkew) ? clockSkew : 5,
-                RequireHttpsMetadata = await _secretManager.GetSecretAsync(SecretPath, "KeycloakRequireHttpsMetadata") is not string requireHttpsMetadataStr || !bool.TryParse(requireHttpsMetadataStr, out var requireHttpsMetadata) || requireHttpsMetadata,
-                ValidateAudience = await _secretManager.GetSecretAsync(SecretPath, "KeycloakValidateAudience") is not string validateAudienceStr || !bool.TryParse(validateAudienceStr, out var validateAudience) || validateAudience,
-                ValidateIssuer = await _secretManager.GetSecretAsync(SecretPath, "KeycloakValidateIssuer") is not string validateIssuerStr || !bool.TryParse(validateIssuerStr, out var validateIssuer) || validateIssuer,
-                ValidateLifetime = await _secretManager.GetSecretAsync(SecretPath, "KeycloakValidateLifetime") is not string validateLifetimeStr || !bool.TryParse(validateLifetimeStr, out var validateLifetime) || validateLifetime,
-                ValidateTokenSignature = await _secretManager.GetSecretAsync(SecretPath, "KeycloakValidateTokenSignature") is not string validateTokenSignatureStr || !bool.TryParse(validateTokenSignatureStr, out var validateTokenSignature) || validateTokenSignature
+                Audience = audience.Data!,
+                Authority = authirty.Data!,
+                Realm = realm.Data! ,
+                ClientId = clientId.Data!,
+                ClientSecret = clientSecret.Data!   ,
+                ClockSkew = clockSkew.Data is string clockSkewStr && int.TryParse(clockSkewStr, out var clockSkewOut) ? clockSkewOut : 5,
+                RequireHttpsMetadata = requireHttpsMetadata.Data is not string requireHttpsMetadataStr || !bool.TryParse(requireHttpsMetadataStr, out var requireHttpsMetadataOut) || requireHttpsMetadataOut,
+                ValidateAudience =  validateAudience.Data is not string validateAudienceStr || !bool.TryParse(validateAudienceStr, out var validateAudienceOut) || validateAudienceOut,
+                ValidateIssuer = validateIssuer.Data is not string validateIssuerStr || !bool.TryParse(validateIssuerStr, out var validateIssuerOut) || validateIssuerOut,
+                ValidateLifetime = validateLifetime.Data is not string validateLifetimeStr || !bool.TryParse(validateLifetimeStr, out var validateLifetimeOut) || validateLifetimeOut,
+                ValidateTokenSignature = validateTokenSignature.Data is not string validateTokenSignatureStr || !bool.TryParse(validateTokenSignatureStr, out var validateTokenSignatureOut) || validateTokenSignatureOut
             };
 
             if (string.IsNullOrEmpty(keycloakSettings.Audience) ||

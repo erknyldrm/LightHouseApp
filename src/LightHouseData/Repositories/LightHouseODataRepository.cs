@@ -1,5 +1,6 @@
 using System;
 using Dapper;
+using LightHouseApplication.Common;
 using LightHouseApplication.Contracts.Repositories;
 using LightHouseApplication.Dtos;
 
@@ -24,5 +25,10 @@ public class LightHouseODataRepository(IDbConnectionFactory dbConnectionFactory)
         using var connection = dbConnectionFactory.CreateConnection();
         var result = await connection.QueryAsync<QueryableLightHouseDto>(query);
         return [.. result];
+    }
+
+    IQueryable<Result<QueryableLightHouseDto>> ILightHouseODataRepository.GetLightHouses()
+    {
+        throw new NotImplementedException();
     }
 }

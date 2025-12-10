@@ -1,3 +1,4 @@
+using LightHouseApplication.Common;
 using LightHouseApplication.Contracts.Repositories;
 using LightHouseApplication.Dtos;
 using Microsoft.AspNetCore.OData.Query;
@@ -12,7 +13,7 @@ public class LightHousesController(ILightHouseODataRepository lightHouseODataRep
     private readonly ILogger<LightHousesController> _logger = logger;
 
     [EnableQuery]
-    public IQueryable<QueryableLightHouseDto> Get()
+    public IQueryable<Result<QueryableLightHouseDto>> Get()
     {
         _logger.LogInformation("Getting all lighthouses");
         return _lightHouseODataRepository.GetLightHouses();

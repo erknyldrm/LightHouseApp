@@ -2,7 +2,7 @@ using System;
 using LightHouseApplication.Common;
 using LightHouseApplication.Dtos;
 
-namespace LightHouseApplication.Contracts;
+namespace LightHouseApplication.Contracts.ExternalServices;
 
 public interface IPhotoUploadService
 {

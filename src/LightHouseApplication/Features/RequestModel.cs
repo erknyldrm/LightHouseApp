@@ -1,13 +1,13 @@
 using System;
 using LightHouseApplication.Dtos;
 
-namespace LightHouseApplication.Features.Models
+namespace LightHouseApplication.Features
 {
     internal record CreateLightHouseRequest(LightHouseDto LightHouse);
 
     internal record GetLightHouseByIdRequest(Guid Id);
 
-    internal record DeleteLightHouseRequest(Guid Id);
+    //internal record DeleteLightHouseRequest(Guid Id);
 
     internal record GetAllLightHousesRequest();
 

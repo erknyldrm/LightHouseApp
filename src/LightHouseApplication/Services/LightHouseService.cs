@@ -3,7 +3,8 @@ using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
 using LightHouseApplication.Features.LightHouse;
-using LightHouseApplication.Features.Models;
+using LightHouseApplication.Features;
+using LightHouseApplication.Contracts.ExternalServices;
 
 namespace LightHouseApplication.Services;
 

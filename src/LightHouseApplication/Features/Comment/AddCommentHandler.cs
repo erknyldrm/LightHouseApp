@@ -2,10 +2,11 @@ using System;
 using FluentValidation;
 using LightHouseApplication.Common;
 using LightHouseApplication.Common.Pipeline;
+using LightHouseApplication.Contracts;
+using LightHouseApplication.Contracts.Repositories;
 using LightHouseApplication.Dtos;
-using LightHouseDomain.Interfaces;
 
-namespace LightHouseInfrastructure.Features.Comment;
+namespace LightHouseApplication.Features.Comment;
 
 internal record AddCommentRequest(CommentDto Comment);
 
@@ -40,11 +41,11 @@ internal class AddCommentHandler(ICommentRepository repository, IUserRepository 
             return Result<Guid>.Fail("Photo does not exist");
 
         var alreadyCommented = await _repository.ExistsForUserAsync(dto.UserId, dto.PhotoId);
-        if (alreadyCommented)
+        if (alreadyCommented.IsSuccess)
             return Result<Guid>.Fail("User has already commented...");
 
-        var isCommentClean = await _commentAuditor.IsTextAppropriateAsync(dto.Text);
-        if (!isCommentClean)
+        var commentCleanResult = await _commentAuditor.IsTextAppropriateAsync(dto.Text);
+        if (!commentCleanResult.IsSuccess)
         {
             return Result<Guid>.Fail("Comment contains inappropriate language");
         }
@@ -52,7 +53,7 @@ internal class AddCommentHandler(ICommentRepository repository, IUserRepository 
         var comment = new LightHouseDomain.Entities.Comment(Guid.NewGuid(), dto.PhotoId, dto.Text, dto.Rating);
 
         var result = await _repository.AddAsync(comment);
-        if (!result)
+        if (!result.IsSuccess)
         {
             return Result<Guid>.Fail("Failed to add comment to repository.");
         }

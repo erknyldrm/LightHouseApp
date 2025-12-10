@@ -2,7 +2,7 @@
 using LightHouseApplication.Common;
 using LightHouseApplication.Dtos;
 
-namespace LightHouseApplication.Contracts;
+namespace LightHouseApplication.Contracts.ExternalServices;
 
 public interface ILightHouseService
 {
@@ -13,5 +13,3 @@ public interface ILightHouseService
     Task<Result<Guid>> DeleteLightHouseAsync(Guid id);
     Task<Result<IEnumerable<LightHouseTopDto>>> GetTopAsync(TopDto topDto);
 }
-
-

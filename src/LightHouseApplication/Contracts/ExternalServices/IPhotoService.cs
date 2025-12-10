@@ -1,12 +1,14 @@
+using LightHouseApplication.Common;
 using LightHouseApplication.Dtos;
 
-namespace LightHouseApplication.Contracts;
+namespace LightHouseApplication.Contracts.ExternalServices;
 
 
 public interface IPhotoService
 {
-    Task<IEnumerable<PhotoDto>> GetPhotosByLightHouseIdAsync(Guid lightHouseId);
-    Task<PhotoDto?> GetPhotoByIdAsync(Guid id);
-    Task DeletePhotoAsync(Guid id);
-    
+    Task<Result<IEnumerable<PhotoDto>>> GetPhotosByLightHouseIdAsync(Guid lightHouseId);
+    Task<Result<PhotoDto>> GetPhotoByIdAsync(Guid id);
+    Task<Result> DeletePhotoAsync(Guid id);
+    Task<Result<Stream>> GetRawPhotoAsync(string fileName);
+
 }

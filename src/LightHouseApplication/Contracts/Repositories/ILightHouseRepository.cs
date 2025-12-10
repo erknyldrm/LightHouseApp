@@ -8,11 +8,12 @@ namespace LightHouseApplication.Contracts.Repositories;
 public interface ILightHouseRepository
 {
     
-    Task<LightHouse?> GetByIdAsync(int id);
-    Task<IEnumerable<LightHouse>> GetAllAsync();
+    Task<Result<LightHouse>> GetByIdAsync(Guid id);
+    Task<Result<IEnumerable<LightHouse>>> GetAllAsync();
     Task<Result> AddAsync(LightHouse entity);
-    Task UpdateAsync(LightHouse entity);
-    Task DeleteAsync(int id);
-    Task<IEnumerable<LightHouseWithStats>> GetTopAsync(int count);
+    Task<Result> UpdateAsync(LightHouse entity);
+    Task<Result> DeleteAsync(Guid id);
+
+    Task<Result<IEnumerable<LightHouseWithStats>>> GetTopAsync(int count);  
 
 }

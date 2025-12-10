@@ -1,5 +1,7 @@
 using System;
-using LightHouseDomain.Interfaces;
+using LightHouseApplication.Common;
+using LightHouseApplication.Contracts;
+
 
 namespace LightHouseInfrastructure.Auditors;
 
@@ -11,8 +13,17 @@ public class DefaultCommentAuditor : ICommentAuditor
         "racist",
         "sexist",
     ];
-    public Task<bool> IsTextAppropriateAsync(string text)
+    public Task<Result<bool>> IsTextAppropriateAsync(string text)
     {
-        return Task.FromResult(!_bannedWords.Any(word => text.Contains(word, StringComparison.OrdinalIgnoreCase)));
+        var containsBannedWord = _bannedWords.Any(word => text.Contains(word, StringComparison.OrdinalIgnoreCase)); 
+
+        if (containsBannedWord)
+        {
+            return Task.FromResult(Result<bool>.Ok(false));
+        }
+        else
+        {
+            return Task.FromResult(Result<bool>.Ok(true));
+        }
     }
 }

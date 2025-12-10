@@ -2,6 +2,7 @@ using LightHouseApplication.Contracts;
 using LightHouseDomain.Countries;
 using Dapper;
 using LightHouseApplication.Common;
+using LightHouseApplication.Contracts.Repositories;
 
 namespace LightHouseData.Repositories;
 

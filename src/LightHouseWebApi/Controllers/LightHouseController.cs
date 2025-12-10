@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using LightHouseApplication.Contracts;
 using LightHouseApplication.Dtos;
 using Microsoft.AspNetCore.Authorization;
+using LightHouseApplication.Contracts.ExternalServices;
 
 namespace LightHouseWebApi.Controllers;
 

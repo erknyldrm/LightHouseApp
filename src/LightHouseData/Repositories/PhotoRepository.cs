@@ -1,46 +1,49 @@
 using System;
+using LightHouseApplication.Common;
+using LightHouseApplication.Contracts.Repositories;
 using LightHouseDomain.Entities;
-using LightHouseDomain.Interfaces;
 
-namespace LightHouseData;
+
+namespace LightHouseData.Repositories;
 
 public class PhotoRepository : IPhotoRepository
 {
-    public Task AddAsync(Photo photo)
+    public Task<Result> AddAsync(Photo photo)
     {
         throw new NotImplementedException();
     }
 
-    public Task DeleteAsync(Guid id)
+    public Task<Result> DeleteAsync(Guid id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<Photo>> GetAllAsync()
+    public Task<Result<IEnumerable<Photo>>> GetAllAsync()
     {
         throw new NotImplementedException();
     }
 
-    public async Task<Photo?> GetByIdAsync(Guid id)
+    public async Task<Result<Photo>> GetByIdAsync(Guid id)
     {
-        return new Photo(
+        return Result<Photo>.Ok(new Photo(
             Guid.NewGuid(),
             Guid.NewGuid(),
-            "test.jpg",
-            new LightHouseDomain.ValueObjects.PhotoMetadata ("40mm","1920, 1080", "Canon", DateTime.UtcNow.AddYears(-1)));   
+            "sample.jpg",
+            new LightHouseDomain.ValueObjects.PhotoMetadata("50mm", "2048x1536", "Nikon", DateTime.UtcNow.AddMonths(-6))
+        ));
     }
 
-    public Task<IEnumerable<Photo>> GetByUserIdAsync(Guid userId)
+    public Task<Result<IEnumerable<Photo>>> GetByUserIdAsync(Guid userId)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<Photo>> GetPhotosByLightHouseIdAsync(Guid lightHouseId)
+    public Task<Result<IEnumerable<Photo>>> GetPhotosByLightHouseIdAsync(Guid lightHouseId)
     {
         throw new NotImplementedException();
     }
 
-    public Task UpdateAsync(Photo photo)
+    public Task<Result> UpdateAsync(Photo photo)
     {
         throw new NotImplementedException();
     }

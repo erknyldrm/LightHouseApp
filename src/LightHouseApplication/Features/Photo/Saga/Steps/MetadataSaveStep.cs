@@ -1,6 +1,6 @@
 using LightHouseApplication.Common;
 using LightHouseApplication.Common.DistributedTransaction.Saga;
-using LightHouseDomain.Interfaces;
+using LightHouseApplication.Contracts.Repositories;
 using Microsoft.Extensions.Logging;
 
 namespace LightHouseApplication.Features.Photo.Saga.Steps;

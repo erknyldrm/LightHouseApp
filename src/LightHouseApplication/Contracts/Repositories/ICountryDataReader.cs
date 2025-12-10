@@ -2,7 +2,7 @@ using System;
 using LightHouseApplication.Common;
 using LightHouseDomain.Countries;
 
-namespace LightHouseApplication.Contracts;
+namespace LightHouseApplication.Contracts.Repositories;
 
 public interface ICountryDataReader
 {

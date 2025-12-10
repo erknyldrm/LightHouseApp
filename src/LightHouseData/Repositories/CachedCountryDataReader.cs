@@ -1,6 +1,7 @@
 using System;
 using LightHouseApplication.Common;
 using LightHouseApplication.Contracts;
+using LightHouseApplication.Contracts.Repositories;
 using LightHouseApplication.Dtos;
 using LightHouseDomain.Countries;
 using LightHouseInfrastructure.Caching;
