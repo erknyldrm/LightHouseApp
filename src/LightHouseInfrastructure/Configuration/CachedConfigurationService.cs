@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Concurrent;
-using LightHouseDomain.Interfaces;
 using LightHouseInfrastructure.Caching;
 using LightHouseInfrastructure.Identity;
 using Microsoft.Extensions.Logging;

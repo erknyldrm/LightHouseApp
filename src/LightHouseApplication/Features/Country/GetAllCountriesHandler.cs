@@ -2,6 +2,7 @@ using System;
 using LightHouseApplication.Common;
 using LightHouseApplication.Common.Pipeline;
 using LightHouseApplication.Contracts;
+using LightHouseApplication.Contracts.Repositories;
 using LightHouseApplication.Dtos;
 
 namespace LightHouseApplication.Features.Country;

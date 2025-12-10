@@ -1,10 +1,8 @@
 using FluentValidation;
 using LightHouseApplication.Common;
 using LightHouseApplication.Common.Pipeline;
-using LightHouseApplication.Contracts;
 using LightHouseApplication.Contracts.Repositories;
 using LightHouseApplication.Dtos;
-using LightHouseApplication.Features.Models;
 using LightHouseDomain.Common;
 using LightHouseDomain.Events;
 using LightHouseDomain.ValueObjects;

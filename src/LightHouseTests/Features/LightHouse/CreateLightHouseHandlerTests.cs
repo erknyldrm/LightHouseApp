@@ -7,8 +7,6 @@ using LightHouseApplication.Contracts;
 using LightHouseApplication.Contracts.Repositories;
 using LightHouseApplication.Dtos;
 using LightHouseDomain.Countries;
-using LightHouseDomain.Interfaces;
-using LightHouseInfrastructure.Features.LightHouse;
 using Moq;
 
 namespace LightHouseTests.Features.LightHouse;

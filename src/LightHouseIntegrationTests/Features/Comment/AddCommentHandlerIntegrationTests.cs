@@ -3,7 +3,6 @@ using LightHouseApplication.Dtos;
 using LightHouseApplication.Validators;
 using LightHouseData;
 using LightHouseInfrastructure.Auditors;
-using LightHouseInfrastructure.Features.Comment;
 
 namespace LightHouseIntegrationTests.Features.Comment;
 

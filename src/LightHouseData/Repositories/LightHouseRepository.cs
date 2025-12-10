@@ -4,10 +4,11 @@ using LightHouseApplication.Contracts.Repositories;
 using LightHouseDomain.Countries;
 using LightHouseDomain.Entities;
 using LightHouseDomain.ValueObjects;
+using Microsoft.Extensions.Logging;
 
 namespace LightHouseData;
 
-public partial class LightHouseRepository(IDbConnectionFactory connectionFactory) : ILightHouseRepository
+public partial class LightHouseRepository(IDbConnectionFactory connectionFactory, ILogger<LightHouseRepository> logger) : ILightHouseRepository
 {
 
     private readonly IDbConnectionFactory _connectionFactory = connectionFactory;
@@ -40,48 +41,117 @@ public partial class LightHouseRepository(IDbConnectionFactory connectionFactory
 
     }
 
-    public Task DeleteAsync(int id)
+    public async Task<Result> DeleteAsync(Guid id)
     {
         string query = "DELETE FROM Lighthouses WHERE id = @Id";
         using var connection = _connectionFactory.CreateConnection();
-        return connection.ExecuteAsync(query, new { Id = id });
+        var removed = await connection.ExecuteAsync(query, new { Id = id });
+
+        return removed > 0 ? Result.Ok() : Result.Fail(@"Failed to remove lighthouse.");
     }
 
-    public Task<IEnumerable<LightHouse>> GetAllAsync()
+    public async Task<Result<IEnumerable<LightHouse>>> GetAllAsync()
     {
-        throw new NotImplementedException();
-    }
+        try
+        {
+            const string sql = @"
+            SELECT l.id, l.name, l.country_id, c.name AS country_name, l.latitude, l.longitude
+            FROM lighthouses l
+            INNER JOIN countries c ON l.country_id = c.id;
+            ";
 
-    public async Task<LightHouse?> GetByIdAsync(int id)
-    {
-        string query =
-            @"SELECT l.id, l.name, l.country_id, l.latitude, l.Longitude
-              c.id As Id, c.name As Name
-              FROM Lighthouses l
-              INNER JOIN Countries c ON l.country_id = c.Id
-              WHERE l.id = @Id;";
+            using var conn = _connectionFactory.CreateConnection();
 
-        using var connection = _connectionFactory.CreateConnection();
-        var result = await connection.QueryAsync<LightHouse, Country, LightHouse>(query, map: (l, c) =>
+            var rows = await conn.QueryAsync(sql);
+
+            var list = new List<LightHouse>();
+
+            foreach (var row in rows)
             {
-                var lighthouse = new LightHouse(
-                    l.Name,
-                    c,
-                    new Coordinates(l.Location.Latitude, l.Location.Longitude)
-                );
+                var country = Country.Create((int)row.country_id, (string)row.country_name);
+                var coordinates = new Coordinates((double)row.latitude, (double)row.longitude);
+                var lighthouse = new LightHouse((string)row.name, country, coordinates);
+                list.Add(lighthouse);
+            }
 
-                lighthouse.GetType().GetProperty("Id")!.SetValue(lighthouse, l.Id);
-                return lighthouse;
-            },
-            param: new { Id = id },
-            splitOn: "Id"
-        );
+            return Result<IEnumerable<LightHouse>>.Ok(list);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Error retrieving all lighthouses");
+            return Result<IEnumerable<LightHouse>>.Fail($"Exception occurred while getting all lighthouses: {ex.Message}");
+        }
+    }
 
-        return result.FirstOrDefault();
+    public async Task<Result<LightHouse>> GetByIdAsync(Guid id)
+    {
+        try
+        {
+            string sql = @"
+            SELECT l.id, l.name, l.country_id, c.name AS country_name, l.latitude, l.longitude
+            FROM lighthouses l
+            INNER JOIN countries c ON l.country_id = c.id
+            WHERE l.id = @Id;
+            ";
+
+            using var conn = _connectionFactory.CreateConnection();
+
+            var row = await conn.QuerySingleOrDefaultAsync(sql, new { Id = id });
+
+            if (row == null)
+                return Result<LightHouse>.Fail("Lighthouse not found.");
+
+            var country = Country.Create((int)row.country_id, (string)row.country_name);
+            var coordinates = new Coordinates((double)row.latitude, (double)row.longitude);
+            var lighthouse = new LightHouse((string)row.name, country, coordinates);
+
+            return Result<LightHouse>.Ok(lighthouse);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Error retrieving lighthouse with Id {LighthouseId}", id);
+            return Result<LightHouse>.Fail($"Exception occurred while getting lighthouse: {ex.Message}");
+        }
     }
 
 
-    public Task UpdateAsync(LightHouse entity)
+    public async Task<Result> UpdateAsync(LightHouse lightHouse)
+    {
+        try
+        {
+            const string sql = @"
+                UPDATE lighthouses
+                SET name = @Name,
+                    country_id = @CountryId,
+                    latitude = @Latitude,
+                    longitude = @Longitude
+                WHERE id = @Id;
+            ";
+
+            using var conn = _connectionFactory.CreateConnection();
+
+            var updated = await conn.ExecuteAsync(sql, new
+            {
+                lightHouse.Id,
+                lightHouse.Name,
+                lightHouse.CountryId,
+                lightHouse.Location.Latitude,
+                lightHouse.Location.Longitude
+            });
+
+            return updated > 0
+                ? Result.Ok()
+                : Result.Fail("Failed to update lighthouse.");
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Error updating lighthouse with Id {LighthouseId}", lightHouse.Id);
+            return Result.Fail($"Exception occurred while updating lighthouse: {ex.Message}");
+        }
+
+    }
+
+    Task<Result<IEnumerable<LightHouseWithStats>>> ILightHouseRepository.GetTopAsync(int count)
     {
         throw new NotImplementedException();
     }

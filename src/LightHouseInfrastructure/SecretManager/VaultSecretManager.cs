@@ -1,5 +1,6 @@
 using System;
-using LightHouseDomain.Interfaces;
+using LightHouseApplication.Common;
+using LightHouseApplication.Contracts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using VaultSharp;
@@ -24,18 +25,20 @@ public class VaultSecretManager : ISecretManager
         _logger.LogInformation("VaultSecretManager initialized with address: {Address}", _vaultSettings.Address);
     }
 
-    public async Task<string?> GetSecretAsync(string secretPath, string secretKey, CancellationToken cancellationToken = default)
+    public async Task<Result<string>> GetSecretAsync(string secretPath, string secretKey, CancellationToken cancellationToken = default)
     {
         try
         {
             var secret = await _vaultClient.V1.Secrets.KeyValue.V2.ReadSecretAsync(path: secretPath, mountPoint: _vaultSettings.MountPoint);
+
+
             if (secret?.Data?.Data != null && secret.Data.Data.TryGetValue(secretKey, out var value))
             {
-                return value?.ToString();
+                return Result<string>.Ok(value.ToString()!);
             }
 
             _logger.LogWarning("Secret key {SecretKey} not found in path {SecretPath}", secretKey, secretPath);
-            return null;
+            return Result<string>.Fail($"Secret key {secretKey} not found in path {secretPath}");
         }
         catch (Exception ex)
         {
@@ -44,23 +47,23 @@ public class VaultSecretManager : ISecretManager
         }
     }
 
-    public async Task<Dictionary<string, string>?> GetSecretsAsync(string secretPath, CancellationToken cancellationToken = default)
+    public async Task<Result<Dictionary<string, string>>> GetSecretsAsync(string secretPath, CancellationToken cancellationToken = default)
     {
         try
         {
             var secret = await _vaultClient.V1.Secrets.KeyValue.V2.ReadSecretAsync(path: secretPath, mountPoint: _vaultSettings.MountPoint);
             if (secret?.Data?.Data != null)
             {
-                return secret.Data.Data.ToDictionary(kv => kv.Key, kv => kv.Value?.ToString() ?? string.Empty);
+                return Result<Dictionary<string, string>>.Ok(secret.Data.Data.ToDictionary(kv => kv.Key, kv => kv.Value?.ToString() ?? string.Empty));
             }
 
             _logger.LogWarning("No secrets found in path {SecretPath}", secretPath);
-            return [];
+            return Result<Dictionary<string, string>>.Fail($"No secrets found in path {secretPath}")    ;
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error retrieving secrets from path {SecretPath}", secretPath);
-            throw;
+            return Result<Dictionary<string, string>>.Fail($"Exception occurred while getting secrets: {ex.Message}");  
         }
     }
 }

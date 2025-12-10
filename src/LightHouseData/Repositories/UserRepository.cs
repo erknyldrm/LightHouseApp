@@ -1,13 +1,29 @@
 using System;
+using LightHouseApplication.Common;
+using LightHouseApplication.Contracts.Repositories;
 using LightHouseDomain.Entities;
-using LightHouseDomain.Interfaces;
 
 namespace LightHouseData;
 
 public class UserRepository : IUserRepository
 {
-    public async Task<User> GetByIdAsync(Guid userId)
+    public Task<Result> AddAsync(User user, CancellationToken cancellationToken = default)
     {
-        return new User ("TestUser", "testuser@yopmail.com");
+        throw new NotImplementedException();
+    }
+
+    public Task<Result<User>> GetByEmailAsync(string email, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Result<User>> GetByIdAsync(Guid userId, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Result<User>> GetBySubIdAsync(Guid subId, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
     }
 }

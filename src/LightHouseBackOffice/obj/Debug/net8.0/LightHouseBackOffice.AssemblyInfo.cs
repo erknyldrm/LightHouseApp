@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LightHouseBackOffice")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07823680cf6c8f5602885a74cb7d7efb4a08f686")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f1e1fd1c7921dc6cbf67b0682501a3e6ae14897")]
 [assembly: System.Reflection.AssemblyProductAttribute("LightHouseBackOffice")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LightHouseBackOffice")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

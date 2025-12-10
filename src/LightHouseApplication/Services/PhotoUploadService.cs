@@ -1,5 +1,6 @@
 using LightHouseApplication.Common;
 using LightHouseApplication.Contracts;
+using LightHouseApplication.Contracts.ExternalServices;
 using LightHouseApplication.Dtos;
 using LightHouseApplication.Features.Photo.Saga;
 using Microsoft.Extensions.Logging;

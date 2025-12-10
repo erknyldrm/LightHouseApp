@@ -1,13 +1,13 @@
 using System;
 using System.Net.Http.Json;
-using LightHouseDomain.Interfaces;
-using Microsoft.Extensions.Logging;
+using LightHouseApplication.Common;
+using LightHouseApplication.Contracts;
 
 namespace LightHouseInfrastructure.Auditors;
 
 public class ExternalCommentAuditor(HttpClient httpClient) : ICommentAuditor
 {
-    public async Task<bool> IsTextAppropriateAsync(string text)
+    public async Task<Result<bool>> IsTextAppropriateAsync(string text)
     {
         var response = await httpClient.PostAsJsonAsync("http://localhost:5000", new { Text = text });
 
@@ -15,11 +15,11 @@ public class ExternalCommentAuditor(HttpClient httpClient) : ICommentAuditor
         try
         {
             result = await response.Content.ReadFromJsonAsync<AuditResult>();
-            return result?.IsAppropriate ?? true;
+            return Result<bool>.Ok(result.IsAppropriate);   
         }
         catch (System.Exception ex)         
         {
-            return false;
+            return Result<bool>.Fail($"Failed to parse audit response: {ex.Message}")   ;
         }
     }
 }

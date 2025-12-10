@@ -1,4 +1,5 @@
 using LightHouseApplication.Contracts;
+using LightHouseApplication.Contracts.ExternalServices;
 using LightHouseApplication.Dtos;
 using Microsoft.AspNetCore.Mvc;
 

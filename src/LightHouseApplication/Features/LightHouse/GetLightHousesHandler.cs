@@ -2,9 +2,8 @@ using System;
 using LightHouseApplication.Common;
 using LightHouseApplication.Contracts.Repositories;
 using LightHouseApplication.Dtos;
-using LightHouseDomain.Interfaces;
 
-namespace LightHouseInfrastructure.Features.LightHouse;
+namespace LightHouseApplication.Features.LightHouse;
 
 public class GetLightHousesHandler(ILightHouseRepository lightHouseRepository)
 {
@@ -14,7 +13,14 @@ public class GetLightHousesHandler(ILightHouseRepository lightHouseRepository)
     {
         try
         {
-            var lightHouses = await _lightHouseRepository.GetAllAsync();
+            var lightHousesResult = await _lightHouseRepository.GetAllAsync();
+
+            if (!lightHousesResult.IsSuccess)
+            {
+                return Result<IEnumerable<LightHouseDto>>.Fail(lightHousesResult.ErrorMessage!);
+            }
+
+            var lightHouses = lightHousesResult.Data;
 
             if (lightHouses == null || !lightHouses.Any())
             {

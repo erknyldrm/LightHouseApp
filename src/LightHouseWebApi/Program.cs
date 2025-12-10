@@ -1,7 +1,7 @@
 
 using LightHouseApplication;
+using LightHouseApplication.Contracts;
 using LightHouseData;
-using LightHouseDomain.Interfaces;
 using LightHouseInfrastructure;
 using LightHouseInfrastructure.Auditors;
 using LightHouseInfrastructure.Storage;
